@@ -1,0 +1,47 @@
+customCommands:
+    - key: '<c-f>'
+      command: 'git fetch --prune origin'
+      context: 'remotes'
+    - key: '<c-r>'
+      command: 'git reset --soft HEAD~1'
+      context: 'localBranches'
+    - key: '<c-n>'
+      command: 'git reset --hard'
+      context: 'localBranches'
+gui:
+    # stuff relating to the UI
+    scrollHeight: 2 # how many lines you scroll by
+    scrollPastBottom: true # enable scrolling past the bottom
+    sidePanelWidth: 0.3333 # number from 0 to 1
+    expandFocusedSidePanel: false
+    mainPanelSplitMode: 'flexible' # one of 'horizontal' | 'flexible' | 'vertical'
+    language: 'auto' # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl'
+    theme:
+        lightTheme: false # For terminals with a light background
+        activeBorderColor:
+            - '#ff8800'
+            - bold
+        inactiveBorderColor:
+            - blue
+        optionsTextColor:
+            - blue
+        selectedLineBgColor:
+            - default
+        selectedRangeBgColor:
+            - blue
+        cherryPickedCommitBgColor:
+            - blue
+        cherryPickedCommitFgColor:
+            - cyan
+        unstagedChangesColor:
+            - '#ff8800'
+    commitLength:
+        show: false
+    mouseEvents: true
+    skipDiscardChangeWarning: false
+    skipStashWarning: false
+    showFileTree: true # for rendering changes files in a tree format
+    showListFooter: false # for seeing the '5 of 20' message in list panels
+    showRandomTip: false
+    showCommandLog: false
+    commandLogSize: 8
