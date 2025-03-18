@@ -1,0 +1,17 @@
+*
+!.gitignore
+
+
+# Lazygit
+!lazygit/
+!lazygit/config.yml
+
+# neovim
+!/nvim/*
+!/nvim/*/*
+!nvim/*/*/*
+
+# ags
+!ags/*
+!ags/*/*
+!ags/*/*/*
