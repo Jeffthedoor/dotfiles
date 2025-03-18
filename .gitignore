@@ -7,7 +7,19 @@
 !lazygit/config.yml
 
 # neovim
-!/nvim/**
+!nvim/
+!nvim/*
+!nvim/lua/*
+!nvim/lua/*/*
 
 # ags
-!ags/**
+!ags/
+!ags/*
+!ags/*/*
+!ags/*/*/*
+!ags/*/*/*/*
+
+# hyprland
+!hypr/
+!hypr/*
+!hypr/*/*

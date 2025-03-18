@@ -1,0 +1,3 @@
+return {
+	"VLPatton/frcpal.nvim",
+}
