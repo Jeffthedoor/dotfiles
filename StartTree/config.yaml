@@ -1,0 +1,34 @@
+font_size: 22
+theme: void
+tree_1:
+  general:
+    github: "https://www.github.com/"
+    gmail: "https://mail.google.com/"
+    docs: "https://docs.google.com"
+    drive: "https://drive.google.com/"
+    calendar: "https://calendar.google.com/"
+    maps: "https://maps.google.com/"
+    translate: "https://translate.google.com/"
+  college:
+    wcc: "https://experience.elluciancloud.com/wcc/"
+    msuSIS: 
+      - "https://student.msu.edu/"
+      - "msu SIS"
+    msuHousing: 
+      - "https://msu.starrezhousing.com/" 
+      - "msu housing"
+
+tree_2:
+  entertainment:
+    plex: "https://www.plex.tv/"
+    youtube: "https://www.youtube.com/"
+  AI:
+    chatGPT: "https://chat.openai.com/"
+    gemini: "https://gemini.google.com/"
+    notebookLM: "https://notebooklm.google.com/"
+  social:
+    instagram: "https://www.instagram.com/"
+    reddit: "https://www.reddit.com/"
+    archwiki: 
+      - "https://archlinux.org/"
+      - "arch wiki"
