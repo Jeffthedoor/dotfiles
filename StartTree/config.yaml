@@ -15,9 +15,8 @@ tree_1:
       - "https://student.msu.edu/"
       - "msu SIS"
     msuHousing: 
-      - "https://msu.starrezhousing.com/" 
+      - "https://msu.starrezhousing.com/StarRezPortalX" 
       - "msu housing"
-
 tree_2:
   entertainment:
     plex: "https://www.plex.tv/"

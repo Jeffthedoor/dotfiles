@@ -1,7 +1,0 @@
--- commenting
--- vim.keymap.set("i", "<C-S-_>", function()
---   require("Comment.api").call("toggle.linewise.current", "g@")
--- end, { remap = true, silent = true })
--- vim.keymap.set("n", "<C-S-_>", function()
---   require("Comment.api").call("comment.linewise.current", "g@")
--- end, { remap = true, silent = true })

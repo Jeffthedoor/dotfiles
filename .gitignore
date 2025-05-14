@@ -34,3 +34,7 @@
 !fish/
 !fish/*
 !fish/*/*
+
+# StartTree
+!StartTree/
+!StartTree/*
