@@ -45,4 +45,6 @@ vim.opt.virtualedit         = "block"
 vim.opt.wildmode            = "longest:full,full"
 vim.opt.winminwidth         = 5
 
+vim.opt.shell               = "fish"
+
 --stylua: ignore end

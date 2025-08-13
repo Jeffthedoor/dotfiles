@@ -104,8 +104,9 @@ map({"n"     }, L"sb",  C"Pick buf_lines scope='current'",                     "
 map({"n"     }, L"sc",  C"Pick history",                                       "Search history")
 map({"n"     }, L"sd",  C"Pick diagnostic",                                    "Search diagnostics")
 map({"n"     }, L"sg",  C"Pick grep_live_align",                               "Search files (align)")
-map({"n"     }, L"sG",  C"Pick grep_live",                                     "Search files")
-map({"n", "i"},"<C-u>", C"Pick grep pattern='<cword>' preserve_order=true",    "Search files")
+map({"n"     }, L"sG",  C"Pick grep_live",                                     "Search global")
+map({"n", "i"},"<C-u>", C"Pick grep pattern='<cword>' preserve_order=true",    "Search global under cursor")
+map({"n", "i"},"<C-S-F>", C"Pick grep_live preserve_order=true",               "Search global")
 
 -- map({"n", "i"},"<C-u>", C"MiniPick.builtin.grep_live(meow)",                                     "Search files")
 
