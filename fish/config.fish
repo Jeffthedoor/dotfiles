@@ -1,4 +1,4 @@
-function fish_prompt -d "Write out the prompt"
+# function fishprompt -d "Write out the prompt"
     # set -l color ffb452
 
     # This shows up as USER@HOST /home/user/ >, with the directory colored
@@ -8,7 +8,7 @@ function fish_prompt -d "Write out the prompt"
     # printf '%s@%s %s%s%s > ' $USER $hostname \ (set_color $color) (prompt_pwd) (set_color $color)
 
 
-end
+# end
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
@@ -20,17 +20,13 @@ end
 # end
 
 alias pamcan=pacman
-alias sb='java -jar ~/wpilib/2024/tools/Shuffleboard.jar &'
-alias advs='~/wpilib/2024/advantagescope/AdvantageScope\ \(WPILib\).AppImage --appimage-extract &'
 alias gte='/usr/bin/gnome-text-editor $argv'
 alias dsc='/usr/bin/discord-ptb &'
 alias ab='/usr/bin/abricotine'
-alias beeper='~/Desktop/beeper-3.103.36x86_64.AppImage --appimage-extract-and-run &'
 alias please=sudo
 alias lg=lazygit
 alias src='source ~/.config/fish/config.fish'
-alias esrc='nano ~/.config/fish/config.fish'
- alias pp='~/Documents/utils/pp/pathplanner'
+alias esrc='nvim ~/.config/fish/config.fish'
 alias taildesk='sudo tailscale up --exit-node=100.108.10.152'
 alias tailend='sudo tailscale up --exit-node='
 alias tailtail='sudo tailscale up --exit-node=100.83.87.71'
