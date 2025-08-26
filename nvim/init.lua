@@ -95,7 +95,8 @@ later(load("plugins.mini.surround"))
 
 -- Load now so we can use oil when opening vim with a dir command line arg
 -- later(load("stevearc/oil.nvim",                  { init = "plugins.oil" }))
-later(load("OXY2DEV/markview.nvim", { init = "plugins.markview" }))
+-- mark
+-- later(load("OXY2DEV/markview.nvim", { init = "plugins.markview" }))
 later(load("ggandor/leap.nvim", { add = { name = "leap" }, init = "plugins.leap" }))
 later(load("mfussenegger/nvim-lint", { init = "plugins.nvim-lint" }))
 later(load("sainnhe/edge", { init = "plugins.edge" }))
@@ -105,8 +106,14 @@ later(load("sainnhe/sonokai", { init = "plugins.sonokai" }))
 later(load("stevearc/conform.nvim", { init = "plugins.conform" }))
 later(load("tummetott/reticle.nvim", { init = "plugins.reticle" }))
 later(load("windwp/nvim-autopairs", { setup = {} }))
-later(load("zk-org/zk-nvim", { init = "plugins.zk" }))
 later(load('akinsho/toggleterm.nvim', { init = "plugins.toggleterm" }))
+later(load("zbirenbaum/copilot.lua", {
+  event = "InsertEnter",
+  cmd = "Copilot",
+  init = "plugins.copilot",
+}))
+later(load("zbirenbaum/copilot-cmp", {init = "plugins.cmp-copilot", depends = {"zbirenbaum/copilot.lua"}}))
+-- later(load("giuxtaposition/blink-cmp-copilot", { init = "plugins.blink-cmp-copilot", depends = {"zbirenbaum/copilot.lua"}}))
 
 later(load("nvim-treesitter/nvim-treesitter", {
   init = "plugins.treesitter",
@@ -119,27 +126,27 @@ later(load("nvim-treesitter/nvim-treesitter-context", {
   setup = {},
 }))
 
-local function build_blink(params)
-  vim.notify('Building blink.cmp', vim.log.levels.INFO)
-  local obj = vim.system({ 'cargo', 'build', '--release' }, { cwd = params.path }):wait()
-  if obj.code == 0 then
-    vim.notify('Building blink.cmp done', vim.log.levels.INFO)
-  else
-    vim.notify('Building blink.cmp failed', vim.log.levels.ERROR)
-  end
-end
-later(load('saghen/blink.cmp', {
-  init = "plugins.blink",
-  add = {
-    depends = {
-      "rafamadriz/friendly-snippets",
-    },
-    hooks = {
-      post_install = build_blink,
-      post_checkout = build_blink,
-    },
-  }
-}))
+-- local function build_blink(params)
+--   vim.notify('Building blink.cmp', vim.log.levels.INFO)
+--   local obj = vim.system({ 'cargo', 'build', '--release' }, { cwd = params.path }):wait()
+--   if obj.code == 0 then
+--     vim.notify('Building blink.cmp done', vim.log.levels.INFO)
+--   else
+--     vim.notify('Building blink.cmp failed', vim.log.levels.ERROR)
+--   end
+-- end
+-- later(load('saghen/blink.cmp', {
+--   init = "plugins.blink",
+--   add = {
+--     depends = {
+--       "rafamadriz/friendly-snippets",
+--     },
+--     hooks = {
+--       post_install = build_blink,
+--       post_checkout = build_blink,
+--     },
+--   }
+-- }))
 
 local build_codesnap = function(args)
   vim.notify('Building codesnap', vim.log.levels.INFO)
