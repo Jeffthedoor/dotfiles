@@ -10,13 +10,11 @@ tree_1:
     maps: "https://maps.google.com/"
     translate: "https://translate.google.com/"
   college:
-    wcc: "https://experience.elluciancloud.com/wcc/"
-    msuSIS: 
-      - "https://student.msu.edu/"
-      - "msu SIS"
-    msuHousing: 
-      - "https://msu.starrezhousing.com/StarRezPortalX" 
-      - "msu housing"
+    sis: "https://student.msu.edu/psc/ps/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL"
+    housing: "https://msu.starrezhousing.com/StarRezPortalX"
+    outlook: "https://spartanmail.msu.edu/"
+    d2l: "https://d2l.msu.edu/d2l/lp/auth/saml/initiate-login?entityId=http://www.okta.com/exk8au7wid9bEq7Jw357"
+    coursicle: "https://www.coursicle.com/msu/"
 tree_2:
   entertainment:
     plex: "https://www.plex.tv/"
@@ -28,6 +26,6 @@ tree_2:
   social:
     instagram: "https://www.instagram.com/"
     reddit: "https://www.reddit.com/"
-    archwiki: 
+    archwiki:
       - "https://archlinux.org/"
       - "arch wiki"

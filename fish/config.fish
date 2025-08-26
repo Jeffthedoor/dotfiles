@@ -21,7 +21,6 @@ end
 
 alias pamcan=pacman
 alias gte='/usr/bin/gnome-text-editor $argv'
-alias dsc='/usr/bin/discord-ptb &'
 alias ab='/usr/bin/abricotine'
 alias please=sudo
 alias lg=lazygit
@@ -30,6 +29,8 @@ alias esrc='nvim ~/.config/fish/config.fish'
 alias taildesk='sudo tailscale up --exit-node=100.108.10.152'
 alias tailend='sudo tailscale up --exit-node='
 alias tailtail='sudo tailscale up --exit-node=100.83.87.71'
+alias monleft='echo "monitor=,preferred,auto-left,1" > ~/.config/hypr/hyprland/auto-mon.conf'
+alias monright='echo "monitor=,preferred,auto-right,1" > ~/.config/hypr/hyprland/auto-mon.conf'
 
 function fish_greeting
     #    neofetch
