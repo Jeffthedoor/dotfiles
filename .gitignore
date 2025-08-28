@@ -38,3 +38,19 @@
 # StartTree
 !StartTree/
 !StartTree/*
+
+# Kvantum
+!Kvantum/
+!Kvantum/*
+!Kvantum/*/*
+
+# qt5ct
+!qt5ct/
+!qt5ct/*
+!qt5ct/*/*
+
+# random stuff
+!fuzzel/*
+!wlogout/*
+!mpv/*
+!kitty/*
