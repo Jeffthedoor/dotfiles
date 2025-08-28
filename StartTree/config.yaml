@@ -3,29 +3,31 @@ theme: void
 tree_1:
   general:
     github: "https://www.github.com/"
-    gmail: "https://mail.google.com/"
-    docs: "https://docs.google.com"
-    drive: "https://drive.google.com/"
-    calendar: "https://calendar.google.com/"
-    maps: "https://maps.google.com/"
-    translate: "https://translate.google.com/"
-  college:
-    sis: "https://student.msu.edu/psc/ps/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL"
-    housing: "https://msu.starrezhousing.com/StarRezPortalX"
-    outlook: "https://spartanmail.msu.edu/"
-    d2l: "https://d2l.msu.edu/d2l/lp/auth/saml/initiate-login?entityId=http://www.okta.com/exk8au7wid9bEq7Jw357"
-    coursicle: "https://www.coursicle.com/msu/"
-tree_2:
+    archwiki:
+      - "https://archlinux.org/"
+      - "arch wiki"
+  google:
+     gmail: "https://mail.google.com/"
+     docs: "https://docs.google.com"
+     drive: "https://drive.google.com/"
+     calendar: "https://calendar.google.com/"
+     maps: "https://maps.google.com/"
+     translate: "https://translate.google.com/"
   entertainment:
     plex: "https://www.plex.tv/"
     youtube: "https://www.youtube.com/"
+
+tree_2:
   AI:
     chatGPT: "https://chat.openai.com/"
     gemini: "https://gemini.google.com/"
     notebookLM: "https://notebooklm.google.com/"
-  social:
-    instagram: "https://www.instagram.com/"
-    reddit: "https://www.reddit.com/"
-    archwiki:
-      - "https://archlinux.org/"
-      - "arch wiki"
+  college:
+    sis: "https://student.msu.edu/psc/ps/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL"
+    housing: "https://msu.starrezhousing.com/StarRezPortalX"
+    outlook: "https://spartanmail.msu.edu/"
+    d1l: "https://d2l.msu.edu/d2l/lp/auth/saml/initiate-login?entityId=http://www.okta.com/exk8au7wid9bEq7Jw357"
+    coursicle: "https://www.coursicle.com/msu/"
+    besocratic: "https://besocratic.com/"
+    LON-CAPA: "https://s2.lite.msu.edu/"
+
