@@ -31,6 +31,7 @@ alias tailend='sudo tailscale up --exit-node='
 alias tailtail='sudo tailscale up --exit-node=100.83.87.71'
 alias monleft='echo "monitor=,preferred,auto-left,1" > ~/.config/hypr/hyprland/auto-mon.conf'
 alias monright='echo "monitor=,preferred,auto-right,1" > ~/.config/hypr/hyprland/auto-mon.conf'
+alias mondupe='echo "monitor=,preferred,auto,1,mirror,eDP-1" > ~/.config/hypr/hyprland/auto-mon.conf'
 
 function fish_greeting
     #    neofetch
