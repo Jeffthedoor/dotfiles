@@ -49,6 +49,13 @@
 !qt5ct/*
 !qt5ct/*/*
 
+#quickshell
+!quickshell/
+!quickshell/*
+!quickshell/*/*
+!quickshell/*/*/*
+!quickshell/*/*/*/*
+
 # random stuff
 !fuzzel/*
 !wlogout/*
