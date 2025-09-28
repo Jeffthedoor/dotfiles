@@ -111,6 +111,14 @@ capabilities = vim.tbl_deep_extend("force", capabilities, {
 -- require("java").setup()
 -- require("lspconfig").jdtls.setup({})
 
+local lspconfig = require("lspconfig")
+
+lspconfig.clangd.setup({
+    cmd = { "clangd" }, -- ensure this points to your clangd binary
+    filetypes = { "c", "cpp", "objc", "objcpp" },
+    root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+})
+
 require("mason").setup()
 require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 require("mason-lspconfig").setup({
@@ -123,5 +131,5 @@ require("mason-lspconfig").setup({
         end,
     },
     automatic_installation = true,
-    ensure_installed = { "jdtls" },
+    ensure_installed = { "jdtls", "clangd" },
 })

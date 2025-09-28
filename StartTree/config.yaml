@@ -1,17 +1,13 @@
 font_size: 22
 theme: void
 tree_1:
-  general:
-    github: "https://www.github.com/"
-    archwiki:
-      - "https://archlinux.org/"
-      - "arch wiki"
   google:
      gmail: "https://mail.google.com/"
-     docs: "https://docs.google.com"
-     drive: "https://drive.google.com/"
      calendar: "https://calendar.google.com/"
      maps: "https://maps.google.com/"
+     sheets: "https://sheets.google.com"
+     docs: "https://docs.google.com"
+     drive: "https://drive.google.com/"
      translate: "https://translate.google.com/"
   entertainment:
     plex: "https://www.plex.tv/"
@@ -24,10 +20,24 @@ tree_2:
     notebookLM: "https://notebooklm.google.com/"
   college:
     sis: "https://student.msu.edu/psc/ps/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL"
-    housing: "https://msu.starrezhousing.com/StarRezPortalX"
     outlook: "https://spartanmail.msu.edu/"
-    d1l: "https://d2l.msu.edu/d2l/lp/auth/saml/initiate-login?entityId=http://www.okta.com/exk8au7wid9bEq7Jw357"
+    d2l: "https://d2l.msu.edu/d2l/lp/auth/saml/initiate-login?entityId=http://www.okta.com/exk8au7wid9bEq7Jw357"
     coursicle: "https://www.coursicle.com/msu/"
     besocratic: "https://besocratic.com/"
     LON-CAPA: "https://s2.lite.msu.edu/"
+    gradescope: "https://www.gradescope.com/courses/1071663"
+    codeio: "https://codio.com/home/student?course_id=e007c28265e8d6a73b92f339683249ea"
+    McGraw:
+      - "https://d2l.msu.edu/d2l/le/content/2460123/fullscreen/17818237/View"
+      - "mcgraw hill"
 
+tree_3:
+  server:
+    proxmox: "https://192.168.1.10:8006/"
+    crafty: "https://192.168.1.11:8443/"
+    router: "http://192.168.1.1/"
+  general:
+    github: "https://www.github.com/"
+    archwiki:
+      - "https://archlinux.org/"
+      - "arch wiki"

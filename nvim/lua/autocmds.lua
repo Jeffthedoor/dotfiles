@@ -56,3 +56,14 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         vim.bo.expandtab = false
     end,
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    group = vim.api.nvim_create_augroup("kaz-golang-settings", { clear = true }),
+    pattern = { "cpp" },
+    desc = "Local settings for cpp buffers",
+    callback = function()
+        vim.bo.tabstop = 4
+        vim.bo.shiftwidth = 4
+        vim.bo.expandtab = false
+    end,
+})
