@@ -61,3 +61,5 @@
 !wlogout/*
 !mpv/*
 !kitty/*
+!foot/
+!foot/*
