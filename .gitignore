@@ -1,0 +1,45 @@
+*
+!.gitignore
+
+
+# Lazygit
+!lazygit/
+!lazygit/config.yml
+
+# nixos
+!nixos/
+!nixos/*
+!nixos/*/*
+
+# ags
+!ags/
+!ags/*
+!ags/*/*
+!ags/*/*/*
+!ags/*/*/*/*
+
+# hyprland
+!hypr/
+!hypr/*
+!hypr/*/*
+
+# nvim
+!nvim/
+!nvim/*
+!nvim/*/*
+!nvim/*/*
+
+# fish
+!fish/
+!fish/*
+!fish/*/*
+
+# StartTree
+!StartTree/
+!StartTree/*
+
+# random stuff
+!foot/
+!foot/*
+!rofi/
+!rofi/*

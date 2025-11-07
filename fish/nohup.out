@@ -1,0 +1,32 @@
+
+(gnome-text-editor:163822): libenchant-WARNING **: 21:00:51.277: Error loading plugin: libaspell.so.15: cannot open shared object file: No such file or directory
+
+
+(gnome-text-editor:163822): libenchant-WARNING **: 21:00:51.278: Error loading plugin: libhspell.so.0: cannot open shared object file: No such file or directory
+
+
+(gnome-text-editor:163822): libenchant-WARNING **: 21:00:51.278: Error loading plugin: libnuspell.so.5: cannot open shared object file: No such file or directory
+
+
+(gnome-text-editor:163822): libenchant-WARNING **: 21:00:51.278: Error loading plugin: libvoikko.so.1: cannot open shared object file: No such file or directory
+
+
+(gnome-text-editor:163952): libenchant-WARNING **: 21:01:05.594: Error loading plugin: libaspell.so.15: cannot open shared object file: No such file or directory
+
+
+(gnome-text-editor:163952): libenchant-WARNING **: 21:01:05.594: Error loading plugin: libhspell.so.0: cannot open shared object file: No such file or directory
+
+
+(gnome-text-editor:163952): libenchant-WARNING **: 21:01:05.595: Error loading plugin: libnuspell.so.5: cannot open shared object file: No such file or directory
+
+
+(gnome-text-editor:163952): libenchant-WARNING **: 21:01:05.595: Error loading plugin: libvoikko.so.1: cannot open shared object file: No such file or directory
+
+[34896:0412/093950.659019:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
+[35089:0412/094001.735143:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
+[35301:0412/094014.438824:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
+[36000:0412/094126.481958:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
+[36401:0412/094219.378948:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
+[36574:0412/094227.198548:ERROR:sandbox_linux.cc(377)] InitializeSandbox() called with multiple threads in process gpu-process.
+[36574:0412/094231.073752:ERROR:gl_surface_presentation_helper.cc(260)] GetVSyncParametersIfAvailable() failed for 1 times!
+[36574:0412/094234.694727:ERROR:gl_surface_presentation_helper.cc(260)] GetVSyncParametersIfAvailable() failed for 2 times!
