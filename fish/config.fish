@@ -49,3 +49,5 @@ function fish_greeting
     set_color red
     echo "$greet"
 end
+
+zoxide init fish | source

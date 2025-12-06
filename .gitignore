@@ -9,7 +9,6 @@
 # nixos
 !nixos/
 !nixos/*
-!nixos/*/*
 
 # ags
 !ags/
@@ -22,12 +21,6 @@
 !hypr/
 !hypr/*
 !hypr/*/*
-
-# nvim
-!nvim/
-!nvim/*
-!nvim/*/*
-!nvim/*/*
 
 # fish
 !fish/
@@ -43,3 +36,9 @@
 !foot/*
 !rofi/
 !rofi/*
+
+# waybar
+!waybar/
+!waybar/*
+!waybar/*/
+!waybar/*/*

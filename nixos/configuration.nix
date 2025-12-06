@@ -18,13 +18,25 @@
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.iwd.enable = true;
+  networking.wireless.iwd.settings = {
+    IPv6 = {
+      Enabled = true;
+    };
+    Settings = {
+      AutoConnect = true;
+    };
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.backend = "iwd";
+  };
 
   # Set your time zone.
   time.timeZone = "America/Detroit";
@@ -53,6 +65,7 @@
       "wheel"
       "dialout"
       "plugdev"
+      "input"
     ];
     packages = with pkgs; [ ];
   };
@@ -70,29 +83,35 @@
   # List packages installed in system profile. To search, run:
   environment.systemPackages = with pkgs; [
     # DE
-    libnotify # notification daemon
+    libnotify # notification manager
     brightnessctl # god i wonder
     hyprpolkitagent # keyring agent
     hypridle # idle agent
     hyprsunset # blue light filter that is unused
     hyprlock # lock screen agent
-    hyprpanel # panel. maybe try waybar if 200MB is too much ram
     hyprpicker # color picker
-    hyprpaper # TEST: wallpaper setter
+    hyprpaper # wallpaper setter
     hyprspace # workspace manager
     rofi # launcher
     grimblast # screenshot manager
     hyprpicker # color picker
-    swww # wallpaper daemon
     libgtop # system hardware utilization daemon
     gvfs # gnome virtual file system for some reason
     cliphist # clipboard history
     wl-clipboard # clipboard manager
+    tesseract # ocr
     nordzy-cursor-theme # my cursor
     xdotool # virtual keyboard/mouse
-    matugen # material-you color scheme generator
     nwg-look # gnome colors config. probably unecessary?
-    displaylink
+    nix-search-cli # what do you think
+    displaylink # fuckass drivers for my fuckass dock
+
+    # [expirimenta] waybar reqs
+    waybar
+    mako # notification daemon
+    bluez
+    fzf
+    pulseaudio
 
     # tui utilities
     # development
@@ -102,7 +121,6 @@
     nix-direnv # nix dev environments
     lazygit # ily lazygit <3
     tiny8086 # itty bitty assembly parser
-    # helix
 
     # general utils
     tldr # man't pages
@@ -111,6 +129,10 @@
     unzip # now this ones a toughie
     btop # frick task manager
     feh # image viewer
+    impala # tui wifi
+    bluetui # tui bluetooth
+    element # periodic table
+    cava # sound digitizer
     # git, fish, and foot are declared lower because nix is ass
 
     # gui apps
@@ -128,10 +150,12 @@
     # productivity
     libreoffice-qt # FUCK windows v2.
     hunspell # (dep of libreoffice)
-    elinks
-    tesseract
-    nix-search-cli
-    vscode
+    elinks # weird web browser
+    vscode # what do you think
+    carla
+    piper
+    zoxide
+    bat
   ];
 
   security.sudo = {
@@ -141,6 +165,10 @@
         commands = [
           {
             command = "/run/current-system/sw/bin/nixos-rebuild";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "/run/current-system/sw/bin/tailscale";
             options = [ "NOPASSWD" ];
           }
         ];
@@ -210,6 +238,13 @@
       HibernateDelaySec = "30m";
     };
 
+    # thunar stuff
+    gvfs.enable = true;
+    tumbler.enable = true;
+
+    #piper
+    ratbagd.enable = true;
+
   };
 
   # swap and hibernate
@@ -265,6 +300,18 @@
     powerOnBoot = true;
   };
 
+  #pipewire
+  # rtkit (optional, recommended) allows Pipewire to use the realtime scheduler for increased performance.
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true; # if not already enabled
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    # If you want to use JACK applications, uncomment the following
+    #jack.enable = true;
+  };
+
   # system apps
   programs.hyprland.enable = true;
   xdg.portal.enable = true;
@@ -277,6 +324,11 @@
   programs.fish.enable = true;
   programs.foot.enable = true;
   programs.direnv.enable = true;
+  programs.thunar.enable = true;
+  programs.kdeconnect = {
+    enable = true;
+    package = pkgs.valent;
+  };
 
   system.stateVersion = "25.05"; # don't edit
 }
