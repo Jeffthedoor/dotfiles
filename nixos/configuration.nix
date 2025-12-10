@@ -133,6 +133,10 @@
     bluetui # tui bluetooth
     element # periodic table
     cava # sound digitizer
+    nix-your-shell # make nix-shells use fish
+    zoxide # better cd
+    bat # better cat
+
     # git, fish, and foot are declared lower because nix is ass
 
     # gui apps
@@ -154,8 +158,7 @@
     vscode # what do you think
     carla
     piper
-    zoxide
-    bat
+    superfile
   ];
 
   security.sudo = {
@@ -169,6 +172,10 @@
           }
           {
             command = "/run/current-system/sw/bin/tailscale";
+            options = [ "NOPASSWD" ];
+          }
+          {
+            command = "/run/current-system/sw/bin/nix-collect-garbage";
             options = [ "NOPASSWD" ];
           }
         ];
@@ -244,7 +251,6 @@
 
     #piper
     ratbagd.enable = true;
-
   };
 
   # swap and hibernate
@@ -318,7 +324,10 @@
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # user-space apps
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
+  };
 
   programs.git.enable = true;
   programs.fish.enable = true;

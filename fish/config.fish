@@ -14,6 +14,10 @@ if status is-interactive
     set fish_greeting
 end
 
+if command -q nix-your-shell
+    nix-your-shell fish | source
+end
+
 # if test -f ~/.cache/ags/user/generated/terminal/sequences.txt
 #     cat ~/.cache/ags/user/generated/terminal/sequences.txt
 # end
@@ -32,6 +36,7 @@ alias rebuild='sudo nixos-rebuild switch --flake /home/door/.config/nixos#nixos'
 alias econfig='nvim /home/door/.config/nixos/configuration.nix'
 alias ehypr='nvim ./.config/hypr/'
 alias ni='~/code/scripts/addpkg.fish'
+alias gc='sudo nix-collect-garbage --delete-older-than 7d'
 
 ssh-add ~/.ssh/github_rsa &>/dev/null
 
