@@ -6,10 +6,16 @@
 }:
 
 {
+  nix.settings = {
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+  };
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
+    # inputs.hyprland.nixosModules.default
   ];
 
   # Bootloader.
@@ -91,7 +97,7 @@
     hyprlock # lock screen agent
     hyprpicker # color picker
     hyprpaper # wallpaper setter
-    hyprspace # workspace manager
+    # hyprspace # workspace manager
     rofi # launcher
     grimblast # screenshot manager
     hyprpicker # color picker
@@ -159,6 +165,9 @@
     carla
     piper
     superfile
+
+    hyprlandPlugins.hyprspace
+    hyprlandPlugins.hyprsplit
   ];
 
   security.sudo = {
@@ -266,9 +275,9 @@
       size = 16 * 1024; # 16GB in MB
     }
   ];
-  systemd.sleep.extraConfig = ''
-    SuspendState=mem
-  '';
+  # systemd.sleep.extraConfig = ''
+  #   SuspendState=s2idle
+  # '';
 
   # fprintd
   systemd.services.fprintd = {
@@ -319,7 +328,20 @@
   };
 
   # system apps
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    # set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
+    # plugins = with inputs; [
+    #   hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
+    #   Hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.Hyprspace
+    #   # hyprtasking.packages.${pkgs.stdenv.hostPlatform.system}.hyprtasking
+    # ];
+  };
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
