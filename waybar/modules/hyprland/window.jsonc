@@ -1,0 +1,17 @@
+{
+  "hyprland/window": {
+    "format": "{}",
+    "rewrite": {
+      "": "Desktop",
+      "foot": "Terminal",
+      "~": "Terminal"
+    },
+    // "separate-outputs":
+    // "icon":
+    // "icon-size":
+    // "min-length":
+    // "max-length":
+    // "tooltip":
+    "swap-icon-label": false
+  }
+}

@@ -161,7 +161,7 @@
     libreoffice-qt # FUCK windows v2.
     hunspell # (dep of libreoffice)
     elinks # weird web browser
-    vscode # what do you think
+    vscode-fhs # what do you think
     carla
     piper
     superfile
@@ -306,8 +306,18 @@
   programs.ssh.startAgent = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 57621 ]; # spotify
-  networking.firewall.allowedUDPPorts = [ 5353 ]; # spotify
+  networking.firewall.allowedTCPPorts = [
+    57621 # spotify
+    1740 # DS
+  ];
+  networking.firewall.allowedUDPPorts = [
+    5353 # spotify
+
+    # DS
+    1110
+    1150
+    1735
+  ];
 
   #bluetooth
   hardware.bluetooth = {

@@ -3,19 +3,13 @@
 
 
 # Lazygit
-!lazygit/
 !lazygit/config.yml
 
 # nixos
 !nixos/
 !nixos/*
-
-# ags
-!ags/
-!ags/*
-!ags/*/*
-!ags/*/*/*
-!ags/*/*/*/*
+!nixos/*/*
+!nixos/*/*/*
 
 # hyprland
 !hypr/
@@ -26,19 +20,22 @@
 !fish/
 !fish/*
 !fish/*/*
-
-# StartTree
-!StartTree/
-!StartTree/*
-
-# random stuff
-!foot/
-!foot/*
-!rofi/
-!rofi/*
+fish/fish_variables
 
 # waybar
 !waybar/
 !waybar/*
 !waybar/*/
 !waybar/*/*
+!waybar/*/*/*
+
+# random stuff
+!StartTree/config.yaml
+!foot/foot.ini
+!rofi/config.rasi
+!cava/config
+!superfile/
+!superfile/*
+!vesktop/settings.json
+
+
