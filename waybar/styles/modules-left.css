@@ -3,7 +3,7 @@
 --------------*/
 
 #custom-user {
-	padding-right: 12px;
+  padding-right: 12px;
 }
 
 /*----------------
@@ -12,23 +12,23 @@
 
 #custom-left_div.1,
 #custom-right_div.1 {
-	color: @workspaces;
+  color: @workspaces;
 }
 #workspaces {
-	padding: 0 1px;
-	background-color: @workspaces;
+  padding: 0 1px;
+  background-color: @workspaces;
 }
 #workspaces button {
-	border-radius: 16px;
-	min-width: 16px;
-	padding: 0 10px;
+  border-radius: 16px;
+  min-width: 16px;
+  padding: 0 10px;
 }
 #workspaces button:hover {
-	background-color: @hover-bg;
-	color: @hover-fg;
+  background-color: @hover-bg;
+  color: @hover-fg;
 }
 #workspaces button.active label {
-	color: @accent;
+  color: @accent;
 }
 
 /*------------------
@@ -36,5 +36,5 @@
 ------------------*/
 
 #window {
-	margin-left: 12px;
+  margin-left: 12px;
 }

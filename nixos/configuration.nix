@@ -224,7 +224,7 @@
     # userspace stuff
     #autologin
     greetd = {
-      enable = true;
+      enable = false;
       settings = rec {
         initial_session = {
           command = "hyprland > /dev/null 2>&1";
@@ -302,8 +302,8 @@
 
   # networking and related services
   # OpenSSH
-  services.openssh.enable = true;
-  programs.ssh.startAgent = true;
+  # services.openssh.enable = true;
+  # programs.ssh.startAgent = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
@@ -338,20 +338,22 @@
   };
 
   # system apps
-  programs.hyprland = {
-    enable = true;
-    # set the flake package
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # make sure to also set the portal package, so that they are in sync
-    portalPackage =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  # programs.hyprland = {
+  #   enable = true;
+  #   # set the flake package
+  #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+  #   # make sure to also set the portal package, so that they are in sync
+  #   portalPackage =
+  #     inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  #
+  #   # plugins = with inputs; [
+  #   #   hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
+  #   #   Hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.Hyprspace
+  #   #   # hyprtasking.packages.${pkgs.stdenv.hostPlatform.system}.hyprtasking
+  #   # ];
+  # };
 
-    # plugins = with inputs; [
-    #   hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
-    #   Hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.Hyprspace
-    #   # hyprtasking.packages.${pkgs.stdenv.hostPlatform.system}.hyprtasking
-    # ];
-  };
+  programs.niri.enable = true;
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
