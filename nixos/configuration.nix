@@ -366,6 +366,7 @@
   programs.foot.enable = true;
   programs.direnv.enable = true;
   programs.thunar.enable = true;
+  programs.gnome-disks.enable = true;
   programs.kdeconnect = {
     enable = true;
     package = pkgs.valent;
