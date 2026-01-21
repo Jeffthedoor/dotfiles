@@ -39,8 +39,8 @@
     "~/.config/waybar/modules/custom/dividers.jsonc",
     // modules that are not included by default:
     "~/.config/waybar/modules/extras/taskbar.jsonc",
-    "~/.config/waybar/modules/extras/tray.jsonc",
-    "~/.config/waybar/modules/extras/cava.jsonc"
+    "~/.config/waybar/modules/extras/tray.jsonc"
+    // "~/.config/waybar/modules/extras/cava.jsonc"
     // "~/.config/waybar/modules/extras/wireplumber.jsonc"
   ],
   /*------------
@@ -77,7 +77,7 @@
   "modules-right": [
     "custom/left_div#6",
     "group/pulseaudio",
-    "cava",
+    // "cava",
     "mpris",
     "custom/left_div#7",
     "backlight",

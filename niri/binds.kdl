@@ -18,19 +18,23 @@ binds {
     Mod+Z { spawn-sh "rofi -show drun"; }
     Mod+W { spawn "firefox"; }
     Mod+P { spawn "plex-desktop"; }
+    Mod+Y { spawn-sh "~/code/java/diffy-swerve-from-scratch/test.fish"; }
     Control+Shift+Escape { spawn "btop"; }
     Super+Alt+L { spawn "hyprlock"; }
     Super+Alt+H { spawn-sh "systemctl hibernate"; }
 
     // clippy keybinds
     Super+V {spawn-sh "cliphist list | rofi -dmenu | cliphist decode | wl-copy| wl-paste --watch cliphist store"; }
-     Super+Shift+T {spawn-sh "niri msg action screenshot --path '/var/tmp/tmp.png' && tesseract -l eng '/var/tmp/tmp.png' - | wl-copy && rm '/var/tmp/tmp.png'"; }
+   Super+Shift+T {spawn-sh "niri msg action screenshot --path '/var/tmp/tmp.png' && tesseract -l eng '/var/tmp/tmp.png' - | wl-copy && rm '/var/tmp/tmp.png'"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
     XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
 
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),

@@ -15,7 +15,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.home-manager.nixosModules.default
-    # inputs.hyprland.nixosModules.default
+    inputs.spicetify-nix.nixosModules.default
   ];
 
   # Bootloader.
@@ -72,6 +72,7 @@
       "dialout"
       "plugdev"
       "input"
+      "disks"
     ];
     packages = with pkgs; [ ];
   };
@@ -91,13 +92,11 @@
     # DE
     libnotify # notification manager
     brightnessctl # god i wonder
-    hyprpolkitagent # keyring agent
     hypridle # idle agent
     hyprsunset # blue light filter that is unused
     hyprlock # lock screen agent
     hyprpicker # color picker
     hyprpaper # wallpaper setter
-    # hyprspace # workspace manager
     rofi # launcher
     grimblast # screenshot manager
     hyprpicker # color picker
@@ -110,6 +109,7 @@
     xdotool # virtual keyboard/mouse
     nwg-look # gnome colors config. probably unecessary?
     nix-search-cli # what do you think
+    xwayland-satellite
     displaylink # fuckass drivers for my fuckass dock
 
     # [expirimenta] waybar reqs
@@ -122,11 +122,12 @@
     # tui utilities
     # development
     inputs.nixvim.packages.x86_64-linux.default
+    # inputs.niri-caelestia-shell.default
     vim
     bear # cmake helper file generator
     nix-direnv # nix dev environments
     lazygit # ily lazygit <3
-    tiny8086 # itty bitty assembly parser
+    zellij # terminal multiplexer
 
     # general utils
     tldr # man't pages
@@ -152,10 +153,11 @@
     moonlight-qt # FUCK windows
 
     # media
-    spotify # favorite porn app
+    # spotify # favorite porn app
     vlc # favorite music app
     plex-desktop # favorite notes app
     obsidian # volcanic glass
+    firefoxpwa
 
     # productivity
     libreoffice-qt # FUCK windows v2.
@@ -165,9 +167,9 @@
     carla
     piper
     superfile
-
-    hyprlandPlugins.hyprspace
-    hyprlandPlugins.hyprsplit
+    abaddon
+    xournalpp
+    fw-ectool
   ];
 
   security.sudo = {
@@ -195,6 +197,7 @@
 
   # dock
   systemd.services.dlm.wantedBy = [ "multi-user.target" ];
+  security.polkit.enable = true;
 
   services = {
     # hardware shit
@@ -214,7 +217,7 @@
     fwupd.enable = true;
 
     # power modes
-    power-profiles-daemon.enable = true;
+    # power-profiles-daemon.enable = true;
     upower.enable = true;
 
     #CUPS
@@ -224,10 +227,10 @@
     # userspace stuff
     #autologin
     greetd = {
-      enable = false;
+      enable = true;
       settings = rec {
         initial_session = {
-          command = "hyprland > /dev/null 2>&1";
+          command = "${pkgs.niri}/bin/niri-session";
           user = "door";
         };
         default_session = initial_session;
@@ -251,7 +254,7 @@
     logind.settings.Login = {
       HandleLidSwitch = "suspend-then-hibernate";
       HandlePowerKey = "suspend-then-hibernate";
-      HibernateDelaySec = "30m";
+      HandleLidSwitchDocked = "suspend-then-hibernate";
     };
 
     # thunar stuff
@@ -260,7 +263,11 @@
 
     #piper
     ratbagd.enable = true;
+
+    # flatpak
+    flatpak.enable = true;
   };
+  # end services
 
   # swap and hibernate
   boot.kernelParams = [
@@ -275,9 +282,46 @@
       size = 16 * 1024; # 16GB in MB
     }
   ];
-  # systemd.sleep.extraConfig = ''
-  #   SuspendState=s2idle
-  # '';
+  systemd.sleep.extraConfig = "HibernateDelaySec=30m";
+
+  # power saving
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 100;
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 80;
+
+      #Optional helps save long term battery health
+      START_CHARGE_THRESH_BAT0 = 45; # 45 and below it starts to charge
+      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+
+    };
+  };
+  # Systemd service that runs on sleep/wake to ensure minimum battery cycles while docked, and max battery in the morning
+
+  systemd.services.tlp-sleep-hook = {
+    description = "Adjust TLP charging thresholds on sleep/wake based on time";
+    wantedBy = [ "sleep.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ''
+        HOUR=$(date +%H)
+        if [ "$HOUR" -ge 22 ] || [ "$HOUR" -lt 8 ]; then
+          ${pkgs.tlp}/bin/tlp setcharge BAT0 0 100
+        else
+          ${pkgs.tlp}/bin/tlp setcharge BAT0 45 80
+        fi
+      '';
+    };
+  };
 
   # fprintd
   systemd.services.fprintd = {
@@ -338,24 +382,15 @@
   };
 
   # system apps
-  # programs.hyprland = {
-  #   enable = true;
-  #   # set the flake package
-  #   package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-  #   # make sure to also set the portal package, so that they are in sync
-  #   portalPackage =
-  #     inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  #
-  #   # plugins = with inputs; [
-  #   #   hyprsplit.packages.${pkgs.stdenv.hostPlatform.system}.hyprsplit
-  #   #   Hyprspace.packages.${pkgs.stdenv.hostPlatform.system}.Hyprspace
-  #   #   # hyprtasking.packages.${pkgs.stdenv.hostPlatform.system}.hyprtasking
-  #   # ];
-  # };
-
   programs.niri.enable = true;
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal-wlr
+    # pkgs.gnome-keyring
+  ];
+  services.dbus.enable = true;
+  programs.dconf.enable = true;
 
   # user-space apps
   programs.firefox = {
@@ -373,6 +408,28 @@
     enable = true;
     package = pkgs.valent;
   };
+
+  # https://wiki.nixos.org/wiki/Spicetify-Nix
+  programs.spicetify =
+    let
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+    in
+    {
+      enable = true;
+
+      enabledExtensions = with spicePkgs.extensions; [
+        hidePodcasts
+        shuffle # shuffle+ (special characters are sanitized out of extension names)
+        popupLyrics
+
+        catJamSynced
+        wikify
+        bookmark
+      ];
+
+      theme = spicePkgs.themes.starryNight;
+      # colorScheme = "mocha";
+    };
 
   system.stateVersion = "25.05"; # don't edit
 }

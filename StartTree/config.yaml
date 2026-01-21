@@ -7,6 +7,7 @@ tree_1:
     maps: "https://maps.google.com/"
     sheets: "https://sheets.google.com"
     docs: "https://docs.google.com"
+    slides: "https://slides.google.com"
     drive: "https://drive.google.com/"
     translate: "https://translate.google.com/"
   entertainment:
@@ -23,21 +24,27 @@ tree_2:
     outlook: "https://spartanmail.msu.edu/"
     d2l: "https://d2l.msu.edu/d2l/lp/auth/saml/initiate-login?entityId=http://www.okta.com/exk8au7wid9bEq7Jw357"
     coursicle: "https://www.coursicle.com/msu/"
-    besocratic: "https://besocratic.com/"
     LON-CAPA: "https://s2.lite.msu.edu/"
-    gradescope: "https://www.gradescope.com/courses/1071663"
-    codeio: "https://d2l.msu.edu/d2l/le/sequenceLauncher/2473843/View"
     McGraw:
-      - "https://d2l.msu.edu/d2l/le/content/2460123/fullscreen/17818237/View"
+      - "https://newconnect.mheducation.com/"
       - "mcgraw hill"
+    WebWork: "https://webwork2c.math.msu.edu/webwork2/mth_235_ss26_1"
 
 tree_3:
   server:
     proxmox: "https://192.168.1.10:8006/"
     crafty: "https://192.168.1.11:8443/"
     router: "http://192.168.1.1/"
+    homeassistant: "http://192.168.1.20:8123/"
   general:
     github: "https://www.github.com/"
     archwiki:
       - "https://archlinux.org/"
       - "arch wiki"
+    nix-search: "https://search.nixos.org/packages?channel=unstable&"
+    nix wiki: "https://wiki.nixos.org/wiki/NixOS_Wiki"
+  new:
+    sheets: "https://www.sheets.new/"
+    docs: "https://www.docs.new/"
+    slides: "https://www.slides`.new/"
+    drawings: "https://www.slides.new/"

@@ -5,6 +5,8 @@ spawn-at-startup "hyprpaper"
 spawn-at-startup "mako"
 spawn-at-startup "wl-paste --watch cliphist store"
 
+spawn-sh-at-startup "nix develop ~/code/python --command ~/code/python/scripts/tile_n.py"
+
 
 // login
 spawn-at-startup "hyprlock"
