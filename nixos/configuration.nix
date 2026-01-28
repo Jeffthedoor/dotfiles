@@ -6,20 +6,20 @@
 }:
 
 {
-  nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  };
+  # nix.settings = {
+  #   substituters = [ "https://hyprland.cachix.org" ];
+  #   trusted-substituters = [ "https://hyprland.cachix.org" ];
+  #   trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+  # };
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.default
     inputs.spicetify-nix.nixosModules.default
   ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
+  boot.loader.grub.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -93,11 +93,10 @@
     libnotify # notification manager
     brightnessctl # god i wonder
     hypridle # idle agent
-    hyprsunset # blue light filter that is unused
-    hyprlock # lock screen agent
+    tuigreet # lock screen agent
     hyprpicker # color picker
     hyprpaper # wallpaper setter
-    rofi # launcher
+    fuzzel # launcher
     grimblast # screenshot manager
     hyprpicker # color picker
     libgtop # system hardware utilization daemon
@@ -112,8 +111,9 @@
     xwayland-satellite
     displaylink # fuckass drivers for my fuckass dock
 
-    # [expirimenta] waybar reqs
+    # waybar reqs
     waybar
+    waybar-lyric
     mako # notification daemon
     bluez
     fzf
@@ -122,12 +122,12 @@
     # tui utilities
     # development
     inputs.nixvim.packages.x86_64-linux.default
-    # inputs.niri-caelestia-shell.default
     vim
     bear # cmake helper file generator
     nix-direnv # nix dev environments
     lazygit # ily lazygit <3
     zellij # terminal multiplexer
+    fw-ectool # framework led control
 
     # general utils
     tldr # man't pages
@@ -138,11 +138,16 @@
     feh # image viewer
     impala # tui wifi
     bluetui # tui bluetooth
+    wiremix # tui pulseaudio mixer
     element # periodic table
     cava # sound digitizer
     nix-your-shell # make nix-shells use fish
+
+    # shell utils
     zoxide # better cd
     bat # better cat
+    bc # calculator
+    ripgrep # grep
 
     # git, fish, and foot are declared lower because nix is ass
 
@@ -157,19 +162,16 @@
     vlc # favorite music app
     plex-desktop # favorite notes app
     obsidian # volcanic glass
-    firefoxpwa
+    floorp-bin-unwrapped
+    piper
 
     # productivity
     libreoffice-qt # FUCK windows v2.
     hunspell # (dep of libreoffice)
     elinks # weird web browser
     vscode-fhs # what do you think
-    carla
-    piper
     superfile
-    abaddon
-    xournalpp
-    fw-ectool
+    discord
   ];
 
   security.sudo = {
@@ -213,6 +215,17 @@
       variant = "";
     };
 
+    keyd = {
+      enable = true;
+
+      keyboards.default = {
+        ids = [ "*" ];
+        settings.main = {
+          leftmeta = "overload(meta, M-f12)";
+        };
+      };
+    };
+
     # fwupdating
     fwupd.enable = true;
 
@@ -228,15 +241,14 @@
     #autologin
     greetd = {
       enable = true;
-      settings = rec {
-        initial_session = {
-          command = "${pkgs.niri}/bin/niri-session";
-          user = "door";
+      settings = {
+        default_session = {
+          command = "${pkgs.tuigreet}/bin/tuigreet --time --sessions /${config.services.displayManager.sessionData.desktops}/share/wayland-sessions --remember --remember-user-session";
+          user = "greeter";
         };
-        default_session = initial_session;
       };
     };
-
+    # gtk.iconCache.enable = true;
     # tailscale
     tailscale.enable = true;
 
@@ -269,10 +281,44 @@
   };
   # end services
 
+  # grub theme
+  boot.loader.grub = {
+    device = "nodev";
+    efiSupport = true;
+    useOSProber = true; # find arch and windows
+
+    minegrub-world-sel = {
+      enable = true;
+      customIcons = with config.system; [
+        {
+          inherit name;
+          lineTop = with nixos; distroName + " " + codeName + " (" + version + ")";
+          lineBottom = "Survival Mode, No Cheats, Version: " + nixos.release;
+
+          # Icon: you can use an icon from the remote repo, or load from a local file
+          imgname = "nixos";
+        }
+        {
+          name = "windows";
+          lineTop = "Windows 10";
+          lineBottom = "Creative Mode, Cheats Enabled, Version: 23H2";
+          imgName = "windows";
+        }
+        {
+          name = "arch";
+          lineTop = "Arch Linux (Rolling Release)";
+          lineBottom = "Hardcore Mode, No Cheats, Version: Rolling";
+          imgName = "arch";
+        }
+      ];
+    };
+  };
+
   # swap and hibernate
   boot.kernelParams = [
     "resume_offset=1943552"
     "mem_sleep_default=deep"
+    "module_blacklist=hid_sensor_hub"
   ];
   boot.resumeDevice = "/dev/disk/by-uuid/14d73c8b-a5d5-4a01-8bd0-40b5bec149b3";
   powerManagement.enable = true;
@@ -283,6 +329,18 @@
     }
   ];
   systemd.sleep.extraConfig = "HibernateDelaySec=30m";
+
+  # extra greetd config
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal"; # Without this errors will spam on screen
+    # Without these bootlogs will spam on screen
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
+  };
 
   # power saving
   services.tlp = {

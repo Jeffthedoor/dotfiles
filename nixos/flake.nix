@@ -5,19 +5,13 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "path:./nixvim";
     nixos-cli.url = "github:nix-community/nixos-cli";
-    hyprland.url = "github:hyprwm/Hyprland/v0.51.1";
-    # waybar.url = "github:Alexays/Waybar/update_flake_lock_action";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
+    minegrub-world-sel-theme = {
+      url = "github:Lxtharia/minegrub-world-sel-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    niri-caelestia-shell = {
-      url = "github:jutraim/niri-caelestia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -39,8 +33,9 @@
         modules = [
           ./configuration.nix
           ./modules/documentation.nix
-          inputs.home-manager.nixosModules.default
           nixos-cli.nixosModules.nixos-cli
+
+          inputs.minegrub-world-sel-theme.nixosModules.default
 
           # {
           #   nixpkgs.overlays = [ hyprlandOverlay ];

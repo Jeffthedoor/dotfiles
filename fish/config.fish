@@ -22,21 +22,18 @@ end
 #     cat ~/.cache/ags/user/generated/terminal/sequences.txt
 # end
 
-alias pamcan=pacman
 alias please=sudo
 alias lg=lazygit
 alias .='source ~/.config/fish/config.fish'
-alias esrc='nvim ~/.config/fish/config.fish'
-alias taildesk='sudo tailscale up --exit-node=100.108.10.152'
-alias tailend='sudo tailscale up --exit-node='
+alias esrc='cd ~/.config/fish/; nvim ./config.fish'
+alias tailup='sudo tailscale up --exit-node= --accept-routes'
 alias tailtail='sudo tailscale up --exit-node=100.83.87.71'
-alias monleft='echo "monitor=,preferred,auto-left,1" > ~/.config/hypr/hyprland/auto-mon.conf'
-alias monright='echo "monitor=,preferred,auto-right,1" > ~/.config/hypr/hyprland/auto-mon.conf'
-alias rebuild='sudo nixos-rebuild switch --flake /home/door/.config/nixos#nixos'
-alias econfig='nvim /home/door/.config/nixos/configuration.nix'
-alias ehypr='nvim ./.config/hypr/'
+alias re='sudo nixos-rebuild switch --flake /home/door/.config/nixos#nixos'
+alias econfig='cd /home/door/.config/; nvim ./nixos/'
 alias ni='~/code/scripts/addpkg.fish'
 alias gc='sudo nix-collect-garbage --delete-older-than 7d'
+alias n.="nvim ./"
+alias eniri='cd ~/.config/niri; nvim ./'
 
 ssh-add ~/.ssh/github_rsa &>/dev/null
 

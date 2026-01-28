@@ -13,7 +13,7 @@
     "min-length": 2,
     "max-length": 2,
     // "on-click": "hyprctl dispatch exec '[ float; move onscreen 100% 5%] foot ~/.config/waybar/scripts/bluetooth.sh'",
-    "on-click": "foot -T OSD bluetui",
+    "on-click": "~/.config/scripts/menubt.fish",
     // "on-click-middle":
     "on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -i 'network-bluetooth-inactive' -r 1925",
     // "on-scroll-up":

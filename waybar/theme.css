@@ -45,7 +45,7 @@
 
 /* module colors */
 
-@define-color workspaces    @mantle;
+@define-color workspaces    @base;
 @define-color temperature   @mantle;
 @define-color memory        @base;
 @define-color cpu           @surface0;

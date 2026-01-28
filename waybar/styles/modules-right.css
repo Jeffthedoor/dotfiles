@@ -69,3 +69,17 @@
 #custom-power_menu:hover {
   background-color: @hover-bg;
 }
+
+#custom-lyrics {
+  color: #ffffff;
+  margin: 0 5px;
+  padding: 0 10px;
+}
+
+#custom-lyrics.paused {
+  color: #aaaaaa; /* Set custom color when paused */
+}
+
+#tray {
+  background-color: @tray;
+}

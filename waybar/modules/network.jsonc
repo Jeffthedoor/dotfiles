@@ -20,9 +20,9 @@
     "min-length": 2,
     "max-length": 2,
     // "on-click": "hyprctl dispatch exec '[ float; move onscreen 100% 5%] foot ~/.config/waybar/scripts/network.sh'",
-    "on-click": "foot -T OSD impala",
-    "on-click-middle": "foot -T OSD nmtui",
-    "on-click-right": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -i 'network-wireless-off' -r 1125",
+    "on-click": "~/.config/scripts/menunmcli.fish",
+    "on-click-middle": "nmcli radio wifi off && notify-send 'Wi-Fi Disabled' -i 'network-wireless-off' -r 1125",
+    // "on-click-right": , TODO: unfuck wifi script
     // "on-scroll-up":
     // "on-scroll-down":
     // "smooth-scrolling-threshold":

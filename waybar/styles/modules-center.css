@@ -50,6 +50,11 @@
   background-color: @accent;
   color: @main-bg;
 }
+#custom-distro:hover {
+  border-radius: 20px;
+  background-color: @hover-fg;
+  color: @main-bg;
+}
 
 /*--------------------
     idle inhibitor
@@ -97,6 +102,10 @@
   padding: 0 6px 0 4px;
 }
 #bluetooth {
+  background-color: @tray;
+  padding: 0 5px;
+}
+#custom-output_switcher {
   background-color: @tray;
   padding: 0 5px;
 }

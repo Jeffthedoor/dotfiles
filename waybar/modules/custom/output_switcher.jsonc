@@ -1,5 +1,5 @@
 {
-  "custom/power_menu": {
+  "custom/output_switcher": {
     // "exec":
     // "exec-if":
     // "exec-on-event":
@@ -8,19 +8,19 @@
     // "interval":
     // "restart-interval":
     // "signal":
-    "format": "󰤄",
+    "format": "",
     // "format-icons":
     // "rotate":
-    // "min-length":
-    // "max-length":
-    "on-click": "~/.config/scripts/menusys.fish",
+    "min-length": 2,
+    "max-length": 2,
+    "on-click": "~/.config/scripts/menupa.fish",
     // "on-click-middle":
     // "on-click-right":
     // "on-scroll-up":
     // "on-scroll-down":
     // "smooth-scrolling-threshold":
     // "tooltip":
-    "tooltip-format": "Power Menu"
+    "tooltip-format": "Output Switcher"
     // "escape":
   }
 }
