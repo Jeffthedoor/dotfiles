@@ -15,7 +15,7 @@
     // "on-click": "hyprctl dispatch exec '[ float; move onscreen 100% 5%] foot ~/.config/waybar/scripts/bluetooth.sh'",
     "on-click": "~/.config/scripts/menubt.fish",
     // "on-click-middle":
-    "on-click-right": "bluetoothctl power off && notify-send 'Bluetooth Off' -i 'network-bluetooth-inactive' -r 1925",
+    "on-click-right": "bluetoothctl connect C4:5D:83:5E:52:7C",
     // "on-scroll-up":
     // "on-scroll-down":
     // "smooth-scrolling-threshold":

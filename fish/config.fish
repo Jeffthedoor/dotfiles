@@ -28,10 +28,10 @@ alias .='source ~/.config/fish/config.fish'
 alias esrc='cd ~/.config/fish/; nvim ./config.fish'
 alias tailup='sudo tailscale up --exit-node= --accept-routes'
 alias tailtail='sudo tailscale up --exit-node=100.83.87.71'
-alias re='sudo nixos-rebuild switch --flake /home/door/.config/nixos#nixos'
 alias econfig='cd /home/door/.config/; nvim ./nixos/'
 alias ni='~/code/scripts/addpkg.fish'
 alias gc='sudo nix-collect-garbage --delete-older-than 7d'
+alias re='sudo nixos-rebuild switch --flake /home/door/.config/nixos#nixos'
 alias n.="nvim ./"
 alias eniri='cd ~/.config/niri; nvim ./'
 
@@ -50,6 +50,13 @@ function fish_greeting
     end
     set_color red
     echo "$greet"
+end
+
+function update
+    nix flake update --flake /home/door/.config/nixos
+    sudo nix-channel --update
+    sudo nixos-rebuild switch --flake /home/door/.config/nixos#nixos
+    gc
 end
 
 zoxide init fish | source

@@ -73,6 +73,7 @@
       "plugdev"
       "input"
       "disks"
+      "openrazer"
     ];
     packages = with pkgs; [ ];
   };
@@ -95,7 +96,7 @@
     hypridle # idle agent
     tuigreet # lock screen agent
     hyprpicker # color picker
-    hyprpaper # wallpaper setter
+    swww # wallpaper setter
     fuzzel # launcher
     grimblast # screenshot manager
     hyprpicker # color picker
@@ -109,7 +110,6 @@
     nwg-look # gnome colors config. probably unecessary?
     nix-search-cli # what do you think
     xwayland-satellite
-    displaylink # fuckass drivers for my fuckass dock
 
     # waybar reqs
     waybar
@@ -136,8 +136,6 @@
     unzip # now this ones a toughie
     btop # frick task manager
     feh # image viewer
-    impala # tui wifi
-    bluetui # tui bluetooth
     wiremix # tui pulseaudio mixer
     element # periodic table
     cava # sound digitizer
@@ -146,8 +144,8 @@
     # shell utils
     zoxide # better cd
     bat # better cat
-    bc # calculator
     ripgrep # grep
+    dig # dns inspector
 
     # git, fish, and foot are declared lower because nix is ass
 
@@ -156,22 +154,25 @@
     prismlauncher # minecraft
     vesktop # wordle
     moonlight-qt # FUCK windows
+    openrazer-daemon # razer mouse config
+    polychromatic # razer led config
+    piper # logitech mouse config
 
     # media
     # spotify # favorite porn app
     vlc # favorite music app
     plex-desktop # favorite notes app
     obsidian # volcanic glass
-    floorp-bin-unwrapped
-    piper
+    floorp-bin-unwrapped # browser
+    plezy # plex frontend
 
     # productivity
     libreoffice-qt # FUCK windows v2.
     hunspell # (dep of libreoffice)
     elinks # weird web browser
     vscode-fhs # what do you think
-    superfile
-    discord
+    superfile # file manager
+    discord # oops
   ];
 
   security.sudo = {
@@ -205,7 +206,6 @@
     # hardware shit
     # dock
     xserver.videoDrivers = [
-      "displaylink"
       "modesetting"
     ];
 
@@ -220,6 +220,9 @@
 
       keyboards.default = {
         ids = [ "*" ];
+        settings.global = {
+          overload_tap_timeout = 200; # Milliseconds to register a tap before timeout
+        };
         settings.main = {
           leftmeta = "overload(meta, M-f12)";
         };
@@ -314,14 +317,39 @@
     };
   };
 
+  boot = {
+    plymouth = {
+      enable = true;
+      theme = "green_blocks";
+      themePackages = with pkgs; [
+        # By default we would install all themes
+        (adi1090x-plymouth-themes.override {
+          selected_themes = [ "green_blocks" ];
+        })
+      ];
+    };
+
+    # Enable "Silent boot"
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "quiet"
+      "udev.log_level=3"
+      "systemd.show_status=auto"
+
+      "resume_offset=1943552"
+      "mem_sleep_default=deep"
+      "module_blacklist=hid_sensor_hub"
+    ];
+    # Hide the OS choice for bootloaders.
+    # It's still possible to open the bootloader list by pressing any key
+    # It will just not appear on screen unless a key is pressed
+    loader.timeout = 5;
+    resumeDevice = "/dev/disk/by-uuid/14d73c8b-a5d5-4a01-8bd0-40b5bec149b3";
+
+  };
+
   # swap and hibernate
-  boot.kernelParams = [
-    "resume_offset=1943552"
-    "mem_sleep_default=deep"
-    "module_blacklist=hid_sensor_hub"
-  ];
-  boot.resumeDevice = "/dev/disk/by-uuid/14d73c8b-a5d5-4a01-8bd0-40b5bec149b3";
-  powerManagement.enable = true;
   swapDevices = [
     {
       device = "/var/lib/swapfile";
@@ -426,6 +454,12 @@
     enable = true;
     powerOnBoot = true;
   };
+  hardware.graphics = {
+    enable = true;
+    # This is the most important part for Steam on NixOS
+    enable32Bit = true;
+  };
+  hardware.openrazer.enable = true;
 
   #pipewire
   # rtkit (optional, recommended) allows Pipewire to use the realtime scheduler for increased performance.
@@ -466,6 +500,7 @@
     enable = true;
     package = pkgs.valent;
   };
+  programs.steam.enable = true;
 
   # https://wiki.nixos.org/wiki/Spicetify-Nix
   programs.spicetify =

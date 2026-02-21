@@ -16,7 +16,7 @@ binds {
     Super+Alt+S { spawn-sh "systemctl suspend"; }
 
     // clippy keybinds
-    Super+V {spawn-sh "cliphist list | rofi -dmenu | cliphist decode | wl-copy| wl-paste --watch cliphist store"; }
+    Super+V {spawn-sh "cliphist list | fuzzel -w 30 -di | cliphist decode | wl-copy| wl-paste --watch cliphist store"; }
    Super+Shift+T {spawn-sh "niri msg action screenshot --path '/var/tmp/tmp.png' && tesseract -l eng '/var/tmp/tmp.png' - | wl-copy && rm '/var/tmp/tmp.png'"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
@@ -191,6 +191,7 @@ binds {
     Mod+Ctrl+R { reset-window-height; }
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
+    Mod+Alt+F { toggle-windowed-fullscreen; }
 
     // Expand the focused column to space not taken up by other fully visible columns.
     // Makes the column "fill the rest of the space".
