@@ -159,7 +159,6 @@
     piper # logitech mouse config
 
     # media
-    # spotify # favorite porn app
     vlc # favorite music app
     plex-desktop # favorite notes app
     obsidian # volcanic glass
@@ -173,6 +172,10 @@
     vscode-fhs # what do you think
     superfile # file manager
     discord # oops
+
+    # etc
+    angryipscanner
+    evtest
   ];
 
   security.sudo = {
@@ -356,7 +359,7 @@
       size = 16 * 1024; # 16GB in MB
     }
   ];
-  systemd.sleep.extraConfig = "HibernateDelaySec=30m";
+  systemd.sleep.settings.Sleep.HibernateDelaySec = "30m";
 
   # extra greetd config
   systemd.services.greetd.serviceConfig = {
@@ -523,6 +526,21 @@
       theme = spicePkgs.themes.starryNight;
       # colorScheme = "mocha";
     };
+
+  # essentially lets appimages run out of the box
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      (pkgs.runCommand "steamrun-lib" { } "mkdir $out; ln -s ${pkgs.steam-run.fhsenv}/usr/lib64 $out/lib")
+      sentry-native
+      steam
+      libxxf86vm
+      openssl
+      libGLU
+      e2fsprogs
+      libunistring
+    ];
+  };
 
   system.stateVersion = "25.05"; # don't edit
 }

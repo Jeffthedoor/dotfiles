@@ -14,5 +14,6 @@
         "en"
     ],
     "hardwareVideoAcceleration": true,
-    "hardwareAcceleration": false
+    "hardwareAcceleration": false,
+    "splashBackground": "rgb(0, 0, 0)"
 }
