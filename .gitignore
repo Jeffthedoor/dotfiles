@@ -41,3 +41,5 @@ fish/fish_variables
 !superfile/
 !superfile/*
 !vesktop/settings.json
+!scripts/
+!scripts/*
