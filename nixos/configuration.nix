@@ -15,6 +15,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     inputs.spicetify-nix.nixosModules.default
+    inputs.nirinit.nixosModules.default
   ];
 
   # Bootloader.
@@ -140,12 +141,14 @@
     element # periodic table
     cava # sound digitizer
     nix-your-shell # make nix-shells use fish
+    inputs.niri-scratchpad.packages.${pkgs.system}.default # scratchpad
 
     # shell utils
     zoxide # better cd
     bat # better cat
     ripgrep # grep
     dig # dns inspector
+    jq # json parser
 
     # git, fish, and foot are declared lower because nix is ass
 
@@ -284,6 +287,18 @@
 
     # flatpak
     flatpak.enable = true;
+
+    # nirinit
+    nirinit = {
+      enable = true;
+      settings = {
+        # Map app_id to launch command (useful for PWAs, flatpaks, etc.)
+        launch = {
+        };
+        # Apps to skip during restore
+        skip.apps = [ "steam" ];
+      };
+    };
   };
   # end services
 

@@ -1,4 +1,9 @@
 binds {
+    Mod+Return {
+      spawn "niri-scratchpad" "target" "--spawn" "firefox" "title" "Google Gemini — Mozilla Firefox" ;
+    }
+
+
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T { spawn "foot"; }
@@ -8,8 +13,8 @@ binds {
     Mod+C { spawn-sh "~/.config/scripts/menupa.fish"; }
     Mod+W { spawn "firefox"; }
     Mod+P { spawn "plex-desktop"; }
-    Mod+S { spawn "spotify"; }
-    Mod+O { spawn "obsidian"; }
+    Mod+S { spawn "~/.config/scripts/niri-ror/ror.sh" "--app-id" "spotify" "--command" "spotify"; }
+    Mod+O { spawn "~/.config/scripts/niri-ror/ror.sh" "--app-id" "obsidian" "--command" "obsidian"; }
     Control+Shift+Escape { spawn "btop"; }
     Super+Alt+L { spawn "hyprlock"; }
     Super+Alt+H { spawn-sh "systemctl hibernate"; }
