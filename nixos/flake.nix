@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "system flake";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -15,6 +15,12 @@
       url = "github:Lxtharia/minegrub-world-sel-theme";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pandora = {
+      url = "github:PandorasFox/pandora";
+      flake = false;
+    };
+
+    hungery.url = "path:/home/door/code/rust/hungery";
 
   };
 
@@ -34,6 +40,7 @@
           ./configuration.nix
           ./modules/documentation.nix
           ./modules/pandora.nix
+          ./modules/hungery.nix
           nixos-cli.nixosModules.nixos-cli
 
           inputs.minegrub-world-sel-theme.nixosModules.default

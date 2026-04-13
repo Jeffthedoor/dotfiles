@@ -20,7 +20,7 @@ binds {
     Super+Alt+H { spawn-sh "systemctl hibernate"; }
     Super+Alt+S { spawn-sh "systemctl suspend"; }
 
-    Mod+Y {spawn-sh "~/code/java/diffy-swerve-from-scratch/test.fish"; }
+    Mod+Y {spawn-sh "~/code/ros/phoenix-test/deploy.fish"; }
 
     // clippy keybinds
     Super+V {spawn-sh "cliphist list | fuzzel -w 30 -di | cliphist decode | wl-copy| wl-paste --watch cliphist store"; }

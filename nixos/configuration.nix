@@ -111,14 +111,16 @@
     nwg-look # gnome colors config. probably unecessary?
     nix-search-cli # what do you think
     xwayland-satellite
+    pandora # scrollable wallpaper
 
     # waybar reqs
     waybar
     waybar-lyric
     mako # notification daemon
-    bluez
-    fzf
-    pulseaudio
+    bluez # bluetooth daemon
+    fzf # fuzzy finder
+    pulseaudio # sound server
+    wttrbar # weather in waybar
 
     # tui utilities
     # development
@@ -141,6 +143,9 @@
     element # periodic table
     cava # sound digitizer
     nix-your-shell # make nix-shells use fish
+    pciutils # minecraft
+    vulkan-loader # vulkan
+    libGL # openGL
     inputs.niri-scratchpad.packages.${pkgs.system}.default # scratchpad
 
     # shell utils
@@ -172,14 +177,29 @@
     libreoffice-qt # FUCK windows v2.
     hunspell # (dep of libreoffice)
     elinks # weird web browser
-    vscode-fhs # what do you think
+    vscode # what do you think
     superfile # file manager
-    discord # oops
+    slack
 
     # etc
     angryipscanner
     evtest
+    progress
+    meow
+    distrobox
+    macchina
   ];
+
+  # fonts
+  fonts.packages = with pkgs; [
+    nerd-fonts.hack
+    dejavu_fonts
+  ];
+  fonts.fontconfig.defaultFonts = {
+    sansSerif = [ "DejaVu Sans" ];
+    serif = [ "DejaVu Sans Serif" ];
+    monospace = [ "DejaVu Sans Mono" ];
+  };
 
   security.sudo = {
     enable = true;
@@ -204,7 +224,6 @@
     ];
   };
 
-  # dock
   systemd.services.dlm.wantedBy = [ "multi-user.target" ];
   security.polkit.enable = true;
 
@@ -261,6 +280,9 @@
     # tailscale
     tailscale.enable = true;
 
+    # keyring
+    gnome.gnome-keyring.enable = true;
+
     # StartTree server
     static-web-server = {
       enable = true;
@@ -299,6 +321,7 @@
         skip.apps = [ "steam" ];
       };
     };
+
   };
   # end services
 
@@ -411,21 +434,21 @@
   };
   # Systemd service that runs on sleep/wake to ensure minimum battery cycles while docked, and max battery in the morning
 
-  systemd.services.tlp-sleep-hook = {
-    description = "Adjust TLP charging thresholds on sleep/wake based on time";
-    wantedBy = [ "sleep.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = ''
-        HOUR=$(date +%H)
-        if [ "$HOUR" -ge 22 ] || [ "$HOUR" -lt 8 ]; then
-          ${pkgs.tlp}/bin/tlp setcharge BAT0 0 100
-        else
-          ${pkgs.tlp}/bin/tlp setcharge BAT0 45 80
-        fi
-      '';
-    };
-  };
+  # systemd.services.tlp-sleep-hook = {
+  #   description = "Adjust TLP charging thresholds on sleep/wake based on time";
+  #   wantedBy = [ "sleep.target" ];
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     ExecStart = ''
+  #       HOUR=$(date +%H)
+  #       if [ "$HOUR" -ge 22 ] || [ "$HOUR" -lt 8 ]; then
+  #         ${pkgs.tlp}/bin/tlp setcharge BAT0 0 100
+  #       else
+  #         ${pkgs.tlp}/bin/tlp setcharge BAT0 45 80
+  #       fi
+  #     '';
+  #   };
+  # };
 
   # fprintd
   systemd.services.fprintd = {
@@ -436,12 +459,15 @@
   services.fprintd.tod.enable = true;
   services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix; # Goodix driver module
   security.pam.services = {
+    # enable fprinted for everything
     sddm.fprintAuth = false;
     sddm-autologin.fprintAuth = false;
     login.fprintAuth = false;
     sudo.fprintAuth = true;
     kscreenlocker.fprintAuth = true;
     polkit-1.fprintAuth = true;
+
+    login.enableGnomeKeyring = true; # auto-unlock gnome-keyring
   };
 
   # appimage compat
@@ -454,6 +480,7 @@
   # programs.ssh.startAgent = true;
 
   # Open ports in the firewall.
+  networking.firewall.enable = false;
   networking.firewall.allowedTCPPorts = [
     57621 # spotify
     1740 # DS
@@ -474,7 +501,6 @@
   };
   hardware.graphics = {
     enable = true;
-    # This is the most important part for Steam on NixOS
     enable32Bit = true;
   };
   hardware.openrazer.enable = true;
@@ -497,7 +523,6 @@
   xdg.portal.extraPortals = [
     pkgs.xdg-desktop-portal-gtk
     pkgs.xdg-desktop-portal-wlr
-    # pkgs.gnome-keyring
   ];
   services.dbus.enable = true;
   programs.dconf.enable = true;
@@ -552,9 +577,19 @@
       libxxf86vm
       openssl
       libGLU
+      libGL
       e2fsprogs
       libunistring
+      glfw
+      wayland
     ];
+  };
+
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+
+    defaultNetwork.settings.dns_enabled = true;
   };
 
   system.stateVersion = "25.05"; # don't edit
