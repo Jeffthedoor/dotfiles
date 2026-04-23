@@ -20,7 +20,6 @@
     "~/.config/waybar/modules/niri/workspaces.jsonc",
     "~/.config/waybar/modules/niri/window.jsonc",
     // modules-center
-    "~/.config/waybar/modules/hyprland/windowcount.jsonc",
     "~/.config/waybar/modules/temperature.jsonc",
     "~/.config/waybar/modules/memory.jsonc",
     "~/.config/waybar/modules/cpu.jsonc",
@@ -41,8 +40,9 @@
     "~/.config/waybar/modules/extras/taskbar.jsonc",
     "~/.config/waybar/modules/extras/tray.jsonc",
     "~/.config/waybar/modules/custom/lyric.jsonc",
-    "~/.config/waybar/modules/custom/output_switcher.jsonc"
-    // "~/.config/waybar/modules/extras/cava.jsonc"
+    "~/.config/waybar/modules/custom/output_switcher.jsonc",
+    "~/.config/waybar/modules/custom/weather.jsonc",
+    "~/.config/waybar/modules/extras/cava.jsonc"
     // "~/.config/waybar/modules/extras/wireplumber.jsonc"
   ],
   /*------------
@@ -96,14 +96,15 @@
   "modules-right": [
     "custom/left_div#6",
     "group/pulseaudio",
-    // "cava",
+    "cava",
     // "mpris",
     "custom/left_div#7",
     "backlight",
     "custom/left_div#8",
     "battery",
     "custom/right_div#3",
-    "niri/workspaces",
+    // "niri/workspaces",
+    "custom/weather",
     "custom/right_div#4",
     "tray"
   ],

@@ -1,0 +1,9 @@
+{
+  "custom/weather": {
+      "format": "{}°",
+      "tooltip": true,
+      "interval": 3600,
+      "exec": "wttrbar --nerd --fahrenheit --mph --location EastLansing",
+      "return-type": "json"
+  }
+}
