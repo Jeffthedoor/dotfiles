@@ -1,6 +1,6 @@
 binds {
     Mod+Return {
-      spawn "niri-scratchpad" "target" "--spawn" "firefox" "title" "Google Gemini — Mozilla Firefox" ;
+      spawn "niri-scratchpad" "target" "--spawn" "firefox" "title" "Practice Exam Question Answering Instructions - Google Gemini — Mozilla Firefox" ;
     }
 
 
@@ -20,7 +20,7 @@ binds {
     Super+Alt+H { spawn-sh "systemctl hibernate"; }
     Super+Alt+S { spawn-sh "systemctl suspend"; }
 
-    Mod+Y {spawn-sh "~/code/ros/phoenix-test/deploy.fish"; }
+    Mod+Y { spawn-sh "~/code/ros/vision/scripts/deploy.fish"; }
 
     // clippy keybinds
     Super+V {spawn-sh "cliphist list | fuzzel -w 30 -di | cliphist decode | wl-copy| wl-paste --watch cliphist store"; }

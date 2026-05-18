@@ -22,8 +22,9 @@
 
 # fish
 !fish/
-!fish/*
-!fish/*/*
+!fish/config.fish
+!fish/functions/
+!fish/fiunctions/*
 fish/fish_variables
 
 # waybar

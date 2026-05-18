@@ -1,7 +1,7 @@
 //not working rn
 spawn-at-startup "waybar"
 
-spawn-at-startup "pandora"
+spawn-at-startup "awww-daemon"
 spawn-at-startup "mako"
 spawn-at-startup "wl-paste --watch cliphist store"
 

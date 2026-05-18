@@ -2,18 +2,6 @@
     "discordBranch": "stable",
     "minimizeToTray": true,
     "arRPC": true,
-    "enableMenu": false,
-    "disableMinSize": true,
-    "clickTrayToShowHide": true,
-    "enableSplashScreen": false,
-    "staticTitle": false,
-    "tray": true,
     "splashColor": "rgb(220, 220, 223)",
-    "spellCheckLanguages": [
-        "en-US",
-        "en"
-    ],
-    "hardwareVideoAcceleration": true,
-    "hardwareAcceleration": false,
     "splashBackground": "rgb(0, 0, 0)"
 }

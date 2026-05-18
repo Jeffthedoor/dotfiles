@@ -35,11 +35,20 @@ alias re='sudo nixos-rebuild switch --flake /home/door/.config/nixos#nixos'
 alias n.="nvim ./"
 alias eniri='cd ~/.config/niri; nvim ./'
 alias hungry='/home/door/.cargo/bin/hungery'
+alias lt='ls -t | more'
+
+alias wub='sudo rfkill unblock wifi'
+alias wb='sudo rfkill block wifi'
+
+alias s='bass source ./install/setup.bash'
 
 ssh-add ~/.ssh/github_rsa &>/dev/null
 
 function fish_greeting
-    macchina --theme elektra
+    # ~/.config/fish/config.fish
+    if type -q macchina
+        macchina --theme elektra
+    end
     set hour $(date +%H)
     if [ $hour -lt 12 ]
         set greet "Good morning, Jusnoor!"

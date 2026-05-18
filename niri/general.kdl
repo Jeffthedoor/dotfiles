@@ -117,13 +117,20 @@ output "eDP-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    // position x=1280 y=0
+    position x=0 y=0
 }
 
+// home dock
 output "Samsung Electric Company S27F350 H4ZH902060" {
-  position x=-1920 y=0
+  position x=1805 y=0
 }
 
+output "Hewlett Packard HP 2159 CNT942Z8XB" {
+  position x=3725 y=0
+}
+
+
+// work dock
 output "Dell Inc. DELL P2217 G58F584L0XQB" {
   scale 1
   transform "normal"
@@ -133,7 +140,7 @@ output "Dell Inc. DELL P2217 G58F584L0XQB" {
   //   }
   // }
 
-  position x=-3600 y=0
+  position x=1805 y=0
 }
 
 // Add lines like this to spawn processes at startup.
@@ -216,6 +223,12 @@ window-rule {
     default-window-height { proportion 0.35; }
     // 80% of the screen wide.
     default-column-width { proportion 0.35; }
+}
+
+
+layer-rule {
+    match namespace="awww-daemon"
+    place-within-backdrop true
 }
 
 

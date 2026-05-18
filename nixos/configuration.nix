@@ -97,7 +97,7 @@
     hypridle # idle agent
     tuigreet # lock screen agent
     hyprpicker # color picker
-    swww # wallpaper setter
+    awww # wallpaper setter
     fuzzel # launcher
     grimblast # screenshot manager
     hyprpicker # color picker
@@ -111,7 +111,7 @@
     nwg-look # gnome colors config. probably unecessary?
     nix-search-cli # what do you think
     xwayland-satellite
-    pandora # scrollable wallpaper
+    # pandora # scrollable wallpaper
 
     # waybar reqs
     waybar
@@ -188,6 +188,16 @@
     meow
     distrobox
     macchina
+    ffmpeg
+    yt-dlp
+    obs-studio
+    p7zip
+
+    usbutils
+    dmidecode
+    iw
+    inxi
+    lm_sensors
   ];
 
   # fonts
@@ -232,6 +242,7 @@
     # dock
     xserver.videoDrivers = [
       "modesetting"
+      "displaylink"
     ];
 
     # Configure keymap in X11
@@ -262,7 +273,10 @@
     upower.enable = true;
 
     #CUPS
-    printing.enable = true;
+    printing = {
+      enable = true;
+      drivers = [ pkgs.samsung-unified-linux-driver ];
+    };
     playerctld.enable = true;
 
     # userspace stuff
@@ -311,16 +325,16 @@
     flatpak.enable = true;
 
     # nirinit
-    nirinit = {
-      enable = true;
-      settings = {
-        # Map app_id to launch command (useful for PWAs, flatpaks, etc.)
-        launch = {
-        };
-        # Apps to skip during restore
-        skip.apps = [ "steam" ];
-      };
-    };
+    # nirinit = {
+    #   enable = true;
+    #   settings = {
+    #     # Map app_id to launch command (useful for PWAs, flatpaks, etc.)
+    #     launch = {
+    #     };
+    #     # Apps to skip during restore
+    #     skip.apps = [ "steam" ];
+    #   };
+    # };
 
   };
   # end services
