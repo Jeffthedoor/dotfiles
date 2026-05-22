@@ -19,8 +19,12 @@
       url = "github:PandorasFox/pandora";
       flake = false;
     };
+    nirimod = {
+      url = "github:srinivasr/nirimod";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    hungery.url = "path:/home/door/code/rust/hungery";
+    # hungery.url = "path:/home/door/code/rust/hungery";
 
   };
 
@@ -31,6 +35,7 @@
       nixos-cli,
       spicetify-nix,
       nirinit,
+      nirimod,
       ...
     }@inputs:
     {
@@ -40,7 +45,7 @@
           ./configuration.nix
           ./modules/documentation.nix
           # ./modules/pandora.nix
-          ./modules/hungery.nix
+          # ./modules/hungery.nix
           nixos-cli.nixosModules.nixos-cli
 
           inputs.minegrub-world-sel-theme.nixosModules.default

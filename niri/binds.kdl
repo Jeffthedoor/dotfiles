@@ -7,7 +7,8 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     Mod+T { spawn "foot"; }
-    Mod+F12 { spawn "fuzzel"; } // spawn with keyd
+    Mod+F12 { spawn "fuzzel"; }
+ // spawn with keyd
     Mod+Z { spawn-sh "~/.config/scripts/menubt.fish"; }
     Mod+X { spawn-sh "~/.config/scripts/menunmcli.fish"; }
     Mod+C { spawn-sh "~/.config/scripts/menupa.fish"; }
@@ -23,17 +24,17 @@ binds {
     Mod+Y { spawn-sh "~/code/ros/vision/scripts/deploy.fish"; }
 
     // clippy keybinds
-    Super+V {spawn-sh "cliphist list | fuzzel -w 30 -di | cliphist decode | wl-copy| wl-paste --watch cliphist store"; }
-   Super+Shift+T {spawn-sh "niri msg action screenshot --path '/var/tmp/tmp.png' && tesseract -l eng '/var/tmp/tmp.png' - | wl-copy && rm '/var/tmp/tmp.png'"; }
+    Super+V { spawn-sh "cliphist list | fuzzel -w 30 -di | cliphist decode | wl-copy| wl-paste --watch cliphist store"; }
+   Super+Shift+T { spawn-sh "niri msg action screenshot --path '/var/tmp/tmp.png' && tesseract -l eng '/var/tmp/tmp.png' - | wl-copy && rm '/var/tmp/tmp.png'"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-    XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
-    XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
-    XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86AudioMicMute allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
+    XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
 
     // Example brightness key mappings for brightnessctl.
     // You can use regular spawn with multiple arguments too (to avoid going through "sh"),
@@ -121,10 +122,10 @@ binds {
     // To avoid scrolling through workspaces really fast, you can use
     // the cooldown-ms property. The bind will be rate-limited to this value.
     // You can set a cooldown on any bind, but it's most useful for the wheel.
-    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
     Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+    Mod+Ctrl+WheelScrollUp cooldown-ms=150 { move-column-to-workspace-up; }
 
     Mod+WheelScrollRight      { focus-column-right; }
     Mod+WheelScrollLeft       { focus-column-left; }

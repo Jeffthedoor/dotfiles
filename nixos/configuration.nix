@@ -112,6 +112,7 @@
     nix-search-cli # what do you think
     xwayland-satellite
     # pandora # scrollable wallpaper
+    inputs.nirimod.packages.${pkgs.system}.default
 
     # waybar reqs
     waybar
@@ -198,6 +199,7 @@
     iw
     inxi
     lm_sensors
+    spotify-player
   ];
 
   # fonts

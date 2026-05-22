@@ -36,6 +36,7 @@ alias n.="nvim ./"
 alias eniri='cd ~/.config/niri; nvim ./'
 alias hungry='/home/door/.cargo/bin/hungery'
 alias lt='ls -t | more'
+alias larping='arping'
 
 alias wub='sudo rfkill unblock wifi'
 alias wb='sudo rfkill block wifi'

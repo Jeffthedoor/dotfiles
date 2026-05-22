@@ -42,24 +42,11 @@ input {
         // disabled-on-external-mouse
     }
 
-    mouse {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "no-scroll"
-    }
+    mouse 
 
-    trackpoint {
-        // off
-        // natural-scroll
-        // accel-speed 0.2
-        // accel-profile "flat"
-        // scroll-method "on-button-down"
-        // scroll-button 273
-        // scroll-button-lock
-        // middle-emulation
-    }
+
+    trackpoint 
+
 
     // Uncomment this to make the mouse warp to the center of newly focused windows.
     warp-mouse-to-focus
@@ -117,7 +104,7 @@ output "eDP-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=0 y=0
+    position x=0 y=960
 }
 
 // home dock
@@ -175,13 +162,8 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // Animation settings.
 // The wiki explains how to configure individual animations:
 // https://yalter.github.io/niri/Configuration:-Animations
-animations {
-    // Uncomment to turn off all animations.
-    // off
+animations 
 
-    // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
-}
 
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
@@ -197,7 +179,7 @@ window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Bitwarden$"
+    match app-id=r"firefox$" title="^Bitwarden$"
     open-floating true
 }
 
@@ -208,7 +190,7 @@ window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id=r"firefox$" title="^Picture-in-Picture$"
     open-floating true
 }
 
@@ -236,8 +218,8 @@ layer-rule {
 // Example: block out two password managers from screen capture.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    match app-id=r"^org\.keepassxc\.KeePassXC$"
+    match app-id=r"^org\.gnome\.World\.Secrets$"
 
     block-out-from "screen-capture"
 
@@ -252,4 +234,21 @@ window-rule {
     clip-to-geometry true
 }
 
-workspace "stash" { }
+workspace "stash" 
+
+output "DP-2" {
+    mode "1680x1050@59.954"
+
+    scale 1.0
+
+    transform "normal"
+    position x=1805 y=0
+}
+output "DP-3" {
+    mode "1920x1080@60.000"
+
+    scale 1.0
+
+    transform "normal"
+    position x=1805 y=1050
+}
