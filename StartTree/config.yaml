@@ -18,24 +18,29 @@ tree_2:
   AI:
     chatGPT: "https://chat.openai.com/"
     gemini: "https://gemini.google.com/"
+    claude: "https://claude.ai/"
     notebookLM: "https://notebooklm.google.com/"
   college:
     sis: "https://student.msu.edu/psc/ps/EMPLOYEE/SA/c/NUI_FRAMEWORK.PT_LANDINGPAGE.GBL"
     outlook: "https://spartanmail.msu.edu/"
     d2l: "https://d2l.msu.edu/d2l/lp/auth/saml/initiate-login?entityId=http://www.okta.com/exk8au7wid9bEq7Jw357"
     coursicle: "https://www.coursicle.com/msu/"
-    LON-CAPA: "https://s2.lite.msu.edu/"
-    McGraw:
-      - "https://newconnect.mheducation.com/"
-      - "mcgraw hill"
-    WebWork: "https://webwork2c.math.msu.edu/webwork2/mth_235_ss26_1"
+    # LON-CAPA: "https://s2.lite.msu.edu/"
+    # McGraw:
+    #   - "https://newconnect.mheducation.com/"
+    #   - "mcgraw hill"
+    # WebWork: "https://webwork2c.math.msu.edu/webwork2/mth_235_ss26_1"
+  work:
+    tandem-bot: https://github.com/coordynal/tandem-bot
+    vision: https://github.com/coordynal/vision
+    timesheet: https://docs.google.com/spreadsheets/d/1nmDlEFtdBZzT5zL-dWFx60uMnLhqFCOLiBLA7tDh_Is/edit?gid=0#gid=0
 
 tree_3:
   server:
-    proxmox: "https://192.168.1.10:8006/"
-    crafty: "https://192.168.1.11:8443/"
-    router: "http://192.168.1.1/"
-    homeassistant: "http://192.168.1.20:8123/"
+    proxmox: "https://192.168.7.10:8006/"
+    crafty: "https://100.73.184.119:8443/"
+    router: "http://192.168.7.1/"
+    # homeassistant: "http://192.168.7.20:8123/"
   general:
     github: "https://www.github.com/"
     archwiki:

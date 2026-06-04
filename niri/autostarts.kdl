@@ -1,15 +1,6 @@
-//not working rn
 spawn-at-startup "waybar"
-
-spawn-at-startup "awww-daemon"
 spawn-at-startup "mako"
-spawn-at-startup "wl-paste --watch cliphist store"
 
-// spawn-sh-at-startup "nix develop ~/code/python --command ~/code/python/scripts/tile_n.py"
-
-
-// login
-// spawn-at-startup "hyprlock"
-spawn-at-startup "xdotool key enter"
-
-spawn-at-startup "spotify --minimized"
+spawn-sh-at-startup "wbg -s ~/Pictures/walls/wall4.jpg"
+spawn-sh-at-startup "wl-paste --watch cliphist store"
+spawn-sh-at-startup "tailscale systray"

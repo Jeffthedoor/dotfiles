@@ -1,7 +1,7 @@
 binds {
-    Mod+Return {
-      spawn "niri-scratchpad" "target" "--spawn" "firefox" "title" "Practice Exam Question Answering Instructions - Google Gemini — Mozilla Firefox" ;
-    }
+    // Mod+Return {
+    //   spawn "niri-scratchpad" "target" "--spawn" "firefox" "title" "Practice Exam Question Answering Instructions - Google Gemini — Mozilla Firefox" ;
+    // }
 
 
     Mod+Shift+Slash { show-hotkey-overlay; }

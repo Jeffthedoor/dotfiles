@@ -92,3 +92,6 @@ function auto_enter_ros2 --on-variable PWD
 end
 
 zoxide init fish | source
+
+# Created by `pipx` on 2026-05-26 17:48:46
+set PATH $PATH /home/door/.local/bin

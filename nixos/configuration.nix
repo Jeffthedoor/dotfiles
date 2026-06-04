@@ -81,6 +81,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  # nixpkgs.overlays = [ (import ./overlay.nix) ];
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -97,7 +98,7 @@
     hypridle # idle agent
     tuigreet # lock screen agent
     hyprpicker # color picker
-    awww # wallpaper setter
+    wbg # wallpaper setter
     fuzzel # launcher
     grimblast # screenshot manager
     hyprpicker # color picker
@@ -398,6 +399,19 @@
       "mem_sleep_default=deep"
       "module_blacklist=hid_sensor_hub"
     ];
+
+    # networking settings
+    kernel.sysctl = {
+      # Increase the maximum receive buffer size for network packets (2 GiB)
+      "net.core.rmem_max" = 2147483647;
+
+      # IP fragmentation settings
+      "net.ipv4.ipfrag_time" = 3;
+      "net.ipv4.ipfrag_high_thresh" = 134217728;
+    };
+
+    # TEMPORARY
+    kernelPackages = pkgs.linuxPackages_6_6;
     # Hide the OS choice for bootloaders.
     # It's still possible to open the bootloader list by pressing any key
     # It will just not appear on screen unless a key is pressed
@@ -572,10 +586,7 @@
       enabledExtensions = with spicePkgs.extensions; [
         hidePodcasts
         shuffle # shuffle+ (special characters are sanitized out of extension names)
-        popupLyrics
 
-        catJamSynced
-        wikify
         bookmark
       ];
 
@@ -598,6 +609,10 @@
       libunistring
       glfw
       wayland
+      SDL2
+      libsm
+      libice
+      libxcb
     ];
   };
 
