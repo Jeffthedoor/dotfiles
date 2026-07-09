@@ -23,9 +23,6 @@
       url = "github:srinivasr/nirimod";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # hungery.url = "path:/home/door/code/rust/hungery";
-
   };
 
   outputs =
@@ -43,11 +40,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
-          # ./modules/documentation.nix
-          # ./modules/pandora.nix
-          # ./modules/hungery.nix
           nixos-cli.nixosModules.nixos-cli
-
           inputs.minegrub-world-sel-theme.nixosModules.default
         ];
       };
