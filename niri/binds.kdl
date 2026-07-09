@@ -22,6 +22,7 @@ binds {
     Super+Alt+S { spawn-sh "systemctl suspend"; }
 
     Mod+Y { spawn-sh "~/code/ros/vision/scripts/deploy.fish"; }
+    Super+Ctrl+T { spawn "foot" "fish" "-C" "dbent"; }
 
     // clippy keybinds
     Super+V { spawn-sh "cliphist list | fuzzel -w 30 -di | cliphist decode | wl-copy| wl-paste --watch cliphist store"; }

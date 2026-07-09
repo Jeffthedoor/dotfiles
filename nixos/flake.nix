@@ -43,7 +43,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
-          ./modules/documentation.nix
+          # ./modules/documentation.nix
           # ./modules/pandora.nix
           # ./modules/hungery.nix
           nixos-cli.nixosModules.nixos-cli

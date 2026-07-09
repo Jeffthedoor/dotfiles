@@ -41,7 +41,8 @@ alias larping='arping'
 alias wub='sudo rfkill unblock wifi'
 alias wb='sudo rfkill block wifi'
 
-alias s='bass source ./install/setup.bash'
+alias s='test -e ./install/setup.bash; and bass source ./install/setup.bash'
+# alias dbent='distrobox enter ros2-jazzy; bass source /opt/ros/jazzy/setup.bash'
 
 ssh-add ~/.ssh/github_rsa &>/dev/null
 
@@ -89,6 +90,12 @@ function auto_enter_ros2 --on-variable PWD
             distrobox enter ros2-jazzy -- fish
         end
     end
+end
+
+function dbent --description "Enter ROS2 Jazzy distrobox and source environment"
+    # The -- passes the remaining arguments to the container.
+    # fish -C executes the bass command, then drops you into an interactive shell.
+    distrobox enter ros2-jazzy -- fish -C "bass source /opt/ros/jazzy/setup.bash; s"
 end
 
 zoxide init fish | source

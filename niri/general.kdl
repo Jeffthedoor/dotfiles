@@ -104,18 +104,18 @@ output "eDP-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=0 y=0
+    position x=0 y=559
 }
 
 // home dock
-output "Samsung Electric Company S27F350 H4ZH902060" {
-  position x=1805 y=0
-}
-
-output "Hewlett Packard HP 2159 CNT942Z8XB" {
-  position x=3725 y=0
-}
-
+// output "Samsung Electric Company S27F350 H4ZH902060" {
+//   position x=1805 y=0
+// }
+//
+// output "Hewlett Packard HP 2159 CNT942Z8XB" {
+//   position x=3725 y=0
+// }
+//
 
 // work dock
 output "Dell Inc. DELL P2217 G58F584L0XQB" {
@@ -288,6 +288,7 @@ window-rule {
   match app-id="code"
   match app-id="rviz2"
   match app-id="spotify"
+  match app-id="Slack"
   open-maximized true
 }
 
@@ -367,7 +368,7 @@ output "DP-3" {
     scale 1.0
 
     transform "normal"
-    position x=1805 y=1050
+    position x=1805 y=10
 }
 output "DVI-I-3" {
     mode "1920x1080@60.000"
@@ -384,4 +385,52 @@ output "DVI-I-4" {
 
     transform "normal"
     position x=1805 y=10
+}
+output "DP-8" {
+    mode "1920x1080@60.000"
+
+    scale 1.0
+
+    transform "normal"
+    position x=1804 y=615
+}
+output "DP-9" {
+    mode "1680x1050@59.954"
+
+    scale 1.0
+
+    transform "normal"
+    position x=1805 y=0
+}
+output "DP-5" {
+    mode "1920x1080@60.000"
+
+    scale 1.0
+
+    transform "normal"
+    position x=1805 y=1050
+}
+output "DVI-I-1" {
+    mode "1920x1080@60.000"
+
+    scale 1.0
+
+    transform "normal"
+    position x=2764 y=507
+}
+output "DVI-I-2" {
+    mode "1920x1080@60.000"
+
+    scale 1.0
+
+    transform "normal"
+    position x=6488 y=560
+}
+output "DP-7" {
+    mode "2560x1440@164.834"
+
+    scale 1.0
+
+    transform "normal"
+    position x=3724 y=429
 }

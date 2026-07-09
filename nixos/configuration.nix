@@ -148,7 +148,7 @@
     pciutils # minecraft
     vulkan-loader # vulkan
     libGL # openGL
-    inputs.niri-scratchpad.packages.${pkgs.system}.default # scratchpad
+    inputs.niri-scratchpad.packages.${pkgs.stdenv.hostPlatform.system}.default # scratchpad
 
     # shell utils
     zoxide # better cd
@@ -248,6 +248,8 @@
       "displaylink"
     ];
 
+    hardware.bolt.enable = true;
+
     # Configure keymap in X11
     xserver.xkb = {
       layout = "us";
@@ -266,6 +268,17 @@
           leftmeta = "overload(meta, M-f12)";
         };
       };
+    };
+
+    # NTP
+    chrony = {
+      enable = true;
+      servers = [
+        "0.north-america.pool.ntp.org"
+        "1.north-america.pool.ntp.org"
+        "2.north-america.pool.ntp.org"
+        "time.cloudflare.com"
+      ];
     };
 
     # fwupdating
@@ -411,7 +424,7 @@
     };
 
     # TEMPORARY
-    kernelPackages = pkgs.linuxPackages_6_6;
+    # kernelPackages = pkgs.linuxPackages_6_6;
     # Hide the OS choice for bootloaders.
     # It's still possible to open the bootloader list by pressing any key
     # It will just not appear on screen unless a key is pressed
@@ -480,6 +493,26 @@
   #   };
   # };
 
+  documentation = {
+    # Keep these disabled if you want to save space
+    info.enable = false;
+    nixos.enable = false;
+
+    man = {
+      enable = true;
+      # Enable the man-db cache
+      cache.enable = true;
+      # Delegate cache generation to a background systemd service
+      # rather than blocking your system rebuilds
+      cache.generateAtRuntime = true;
+    };
+  };
+
+  environment.variables = {
+    MANWIDTH = "80";
+    MANROFFOPT = "-P -c";
+  };
+
   # fprintd
   systemd.services.fprintd = {
     wantedBy = [ "multi-user.target" ];
@@ -534,6 +567,9 @@
     enable32Bit = true;
   };
   hardware.openrazer.enable = true;
+
+  # firmware
+  hardware.enableRedistributableFirmware = true;
 
   #pipewire
   # rtkit (optional, recommended) allows Pipewire to use the realtime scheduler for increased performance.
@@ -590,7 +626,7 @@
         bookmark
       ];
 
-      theme = spicePkgs.themes.starryNight;
+      theme = spicePkgs.themes.text;
       # colorScheme = "mocha";
     };
 
