@@ -423,11 +423,8 @@
       "net.ipv4.ipfrag_high_thresh" = 134217728;
     };
 
-    # TEMPORARY
-    # kernelPackages = pkgs.linuxPackages_6_6;
-    # Hide the OS choice for bootloaders.
-    # It's still possible to open the bootloader list by pressing any key
-    # It will just not appear on screen unless a key is pressed
+    kernelPackages = pkgs.linuxPackages_latest;
+
     loader.timeout = 5;
     resumeDevice = "/dev/disk/by-uuid/14d73c8b-a5d5-4a01-8bd0-40b5bec149b3";
 

@@ -104,7 +104,7 @@ output "eDP-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=0 y=559
+    position x=1919 y=520
 }
 
 // home dock
@@ -392,7 +392,7 @@ output "DP-8" {
     scale 1.0
 
     transform "normal"
-    position x=1804 y=615
+    position x=6284 y=583
 }
 output "DP-9" {
     mode "1680x1050@59.954"
