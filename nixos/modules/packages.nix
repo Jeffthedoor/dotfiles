@@ -15,6 +15,7 @@
     hyprpicker # color picker
     wbg # wallpaper setter
     fuzzel # launcher
+    matugen # material-you palette generator (theme-menu "material from wallpaper")
     grimblast # screenshot manager
     libgtop # system hardware utilization daemon
     gvfs # gvfs CLI (gio etc.); the daemon comes from services.gvfs

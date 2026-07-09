@@ -23,9 +23,6 @@
 # fish
 !fish/
 !fish/config.fish
-!fish/functions/
-!fish/fiunctions/*
-fish/fish_variables
 
 # waybar
 !waybar/
@@ -34,10 +31,24 @@ fish/fish_variables
 !waybar/*/*
 !waybar/*/*/*
 
+# themes
+!themes/
+!themes/*
+!themes/*/*
+
+# vscode
+!Code/
+!Code/User/
+!Code/User/settings.json
+
+
 # random stuff
 !StartTree/config.yaml
 !foot/foot.ini
-!rofi/config.rasi
+!fuzzel/
+!fuzzel/fuzzel.ini
+!mako/
+!mako/config
 !cava/config
 !superfile/
 !superfile/*

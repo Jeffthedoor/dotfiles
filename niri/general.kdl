@@ -104,7 +104,7 @@ output "eDP-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1919 y=520
+    position x=1919 y=442
 }
 
 // home dock
@@ -400,7 +400,7 @@ output "DP-9" {
     scale 1.0
 
     transform "normal"
-    position x=1805 y=0
+    position x=3724 y=0
 }
 output "DP-5" {
     mode "1920x1080@60.000"
@@ -408,7 +408,7 @@ output "DP-5" {
     scale 1.0
 
     transform "normal"
-    position x=1805 y=1050
+    position x=3724 y=1050
 }
 output "DVI-I-1" {
     mode "1920x1080@60.000"

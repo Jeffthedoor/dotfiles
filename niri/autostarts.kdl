@@ -1,6 +1,6 @@
 spawn-at-startup "waybar"
 spawn-at-startup "mako"
 
-spawn-sh-at-startup "wbg -s ~/Pictures/walls/wall4.jpg"
+spawn-sh-at-startup "wbg -s \"$(cat ~/.config/themes/current-wallpaper 2>/dev/null || echo ~/Pictures/walls/wall4.jpg)\""
 spawn-sh-at-startup "wl-paste --watch cliphist store"
 spawn-sh-at-startup "tailscale systray"

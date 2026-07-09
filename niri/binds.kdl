@@ -11,6 +11,7 @@ binds {
  // spawn with keyd
     Mod+Z { spawn-sh "~/.config/scripts/menubt.fish"; }
     Mod+X { spawn-sh "~/.config/scripts/menunmcli.fish"; }
+    Mod+Shift+C { spawn-sh "~/.config/scripts/theme-menu.fish"; }
     Mod+C { spawn-sh "~/.config/scripts/menupa.fish"; }
     Mod+W { spawn "firefox"; }
     Mod+P { spawn "plex-desktop"; }
