@@ -15,6 +15,9 @@
   # firmware
   hardware.enableRedistributableFirmware = true;
 
+  # regdom
+  hardware.wirelessRegulatoryDatabase = true;
+
   services = {
     # dock / displaylink
     xserver.videoDrivers = [

@@ -90,4 +90,9 @@
       size = 16 * 1024; # 16GB in MB
     }
   ];
+
+  # iw reg setting
+  extraModprobeConfig = ''
+    options cfg80211 ieee80211_regdom="US"
+  '';
 }
