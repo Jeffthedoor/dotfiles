@@ -6,6 +6,11 @@
 
 {
   boot = {
+    # iw reg setting
+    extraModprobeConfig = ''
+      options cfg80211 ieee80211_regdom="US"
+    '';
+
     loader = {
       efi.canTouchEfiVariables = true;
       timeout = 5;
@@ -91,8 +96,4 @@
     }
   ];
 
-  # iw reg setting
-  extraModprobeConfig = ''
-    options cfg80211 ieee80211_regdom="US"
-  '';
 }
