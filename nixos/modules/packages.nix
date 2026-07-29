@@ -10,7 +10,6 @@
     # DE
     libnotify # notification manager
     brightnessctl # god i wonder
-    hypridle # idle agent
     tuigreet # lock screen agent
     hyprpicker # color picker
     wbg # wallpaper setter
@@ -27,7 +26,8 @@
     nwg-look # gnome colors config. probably unecessary?
     nix-search-cli # what do you think
     xwayland-satellite
-    # pandora # scrollable wallpaper
+    swayidle
+    hyprlock
     inputs.nirimod.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # waybar reqs
@@ -75,12 +75,9 @@
     # git, fish, and foot are declared lower because nix is ass
 
     # gui apps
-    # gaming
-    prismlauncher # minecraft
     vesktop # wordle
     moonlight-qt # FUCK windows
     openrazer-daemon # razer mouse config
-    polychromatic # razer led config
     piper # logitech mouse config
 
     # media

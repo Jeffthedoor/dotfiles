@@ -49,28 +49,6 @@
       # colorScheme = "mocha";
     };
 
-  # essentially lets appimages run out of the box
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-      (pkgs.runCommand "steamrun-lib" { } "mkdir $out; ln -s ${pkgs.steam-run.fhsenv}/usr/lib64 $out/lib")
-      sentry-native
-      steam
-      libxxf86vm
-      openssl
-      libGLU
-      libGL
-      e2fsprogs
-      libunistring
-      glfw
-      wayland
-      SDL2
-      libsm
-      libice
-      libxcb
-    ];
-  };
-
   virtualisation.podman = {
     enable = true;
     dockerCompat = true;

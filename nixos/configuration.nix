@@ -24,6 +24,7 @@
     ./modules/programs.nix
     ./modules/services.nix
     ./modules/packages.nix
+    ./modules/games.nix
   ];
 
   system.stateVersion = "25.05"; # don't edit

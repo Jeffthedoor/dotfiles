@@ -77,6 +77,8 @@ prefer-no-csd
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
 output "eDP-1" {
+    variable-refresh-rate
+
     // Uncomment this line to disable this output.
     // off
 
@@ -89,12 +91,13 @@ output "eDP-1" {
     // mode "1920x1080@120.030"
 
     // You can use integer or fractional scale, for example use 1.5 for 150% scale.
-    scale 1.25
+    scale 1.5
 
     // Transform allows to rotate the output counter-clockwise, valid values are:
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
     transform "normal"
 
+    position x=5434 y=1750
     // Position of the output in the global coordinate space.
     // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
     // The cursor can only move between directly adjacent outputs.
@@ -104,7 +107,7 @@ output "eDP-1" {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1919 y=442
+    // position x=4649 y=965
 }
 
 // home dock
@@ -118,17 +121,17 @@ output "eDP-1" {
 //
 
 // work dock
-output "Dell Inc. DELL P2217 G58F584L0XQB" {
-  scale 1
-  transform "normal"
-  // layout {
-  //   struts {
-  //     bottom 630
-  //   }
-  // }
-
-  position x=1805 y=0
-}
+// output "Dell Inc. DELL P2217 G58F584L0XQB" {
+//   scale 1
+//   transform "normal"
+//   // layout {
+//   //   struts {
+//   //     bottom 630
+//   //   }
+//   // }
+//
+//   position x=1805 y=0
+// }
 
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
@@ -166,98 +169,126 @@ animations {
     workspace-switch {
         spring damping-ratio=0.8 stiffness=523 epsilon=0.0001
     }
-
-     window-open {
-        duration-ms 900
+    window-open {
+        duration-ms 1400
         curve "ease-out-expo"
         custom-shader r"
-        vec4 door_rise(vec3 coords_geo, vec3 size_geo) {
-            float progress = niri_clamped_progress;
+            float ease_curve(float x) {
+                return x < 0.5 ? 4.0*x*x*x : 1.0 - pow(-2.0*x + 2.0, 3.0)/2.0;
+            }
 
-            // Tilt from 90 degrees (flat) to 0 degrees (upright)
-            float tilt = (1.0 - progress) * 1.57079632;
+            vec4 open_color(vec3 coords_geo, vec3 size_geo) {
+                float t = niri_clamped_progress;
+                float prog = ease_curve(t);
 
-            // Pivot point at bottom edge
-            vec2 coords = coords_geo.xy * size_geo.xy;
-            coords.y = size_geo.y - coords.y;
+                // choose corner: 0=top-left,1=top-right,2=bottom-left,3=bottom-right
 
-            // Distance from pivot (bottom edge)
-            float dist_from_pivot = coords.y;
+                int corner = 3; 
+                vec2 start;
+                vec2 dir;
+                if (corner == 0) {
+                    start = vec2(0.0,0.0);
+                    dir = vec2(1.0,1.0);
+                } else if (corner == 1) {
+                    start = vec2(1.0,0.0);
+                    dir = vec2(-1.0,1.0);
+                } else if (corner == 2) {
+                    start = vec2(0.0,1.0);
+                    dir = vec2(1.0,-1.0);
+                } else {
+                    start = vec2(1.0,1.0);
+                    dir = vec2(-1.0,-1.0);
+                }
 
-            // Calculate 3D position
-            // Negative z_offset so it goes away from viewer (backward)
-            float z_offset = -dist_from_pivot * sin(tilt);
-            float y_compressed = dist_from_pivot * cos(tilt);
+                // compute distance along diagonal from corner
+                vec2 p = coords_geo.xy;
+                float dist = dot(p - start, dir);
 
-            // Apply perspective based on depth
-            float perspective = 600.0;
-            float perspective_scale = perspective / (perspective + z_offset);
+                // normalize distance to max diagonal (from corner to opposite)
+                float max_diag = 2.0;
+                float norm_dist = dist / max_diag;
 
-            // Scale everything by perspective
-            coords.x = (coords.x - size_geo.x * 0.5) * perspective_scale + size_geo.x * 0.5;
-            coords.y = y_compressed * perspective_scale;
+                // pixels not yet reached by sweep are invisible
+                if (norm_dist > prog) {
+                    return vec4(0.0);
+                }
 
-            // Flip Y back to normal coordinates
-            coords.y = size_geo.y - coords.y;
+                // sample normally
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 col = texture2D(niri_tex, coords_tex.xy);
 
-            coords_geo = vec3(coords / size_geo.xy, 1.0);
-
-            vec3 coords_tex = niri_geo_to_tex * coords_geo;
-            vec4 color = texture2D(niri_tex, coords_tex.st);
-
-            // Brighten as it rises
-            float brightness = 0.4 + 0.6 * progress;
-            color.rgb *= brightness;
-
-            return color * progress;
-        }
-        vec4 open_color(vec3 coords_geo, vec3 size_geo) {
-            return door_rise(coords_geo, size_geo);
-        }"
+                return col;
+            }
+        "
     }
 
-   window-close {
-    duration-ms 700
-    curve "ease-out-expo"
-    custom-shader r"
-    vec4 bob_and_slide(vec3 coords_geo, vec3 size_geo) {
-        float progress = niri_clamped_progress;
+    window-close {
+        duration-ms 1400
+        curve "ease-out-expo"
+        custom-shader r"
+            // ease-in-out cubic curve helper
+            float ease_curve(float x) {
+                return x < 0.5 ? 4.0*x*x*x : 1.0 - pow(-2.0*x + 2.0, 3.0)/2.0;
+            }
 
-        float y_offset = 0.0;
+            vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+                float t = niri_clamped_progress;
 
-        // Bob phase (0.0 to 0.25) - goes up then back to 0
-        if (progress < 0.25) {
-            float t = progress / 0.25;
-            // Parabola: goes up to peak at t=0.5, back down to 0 at t=1.0
-            y_offset = -40.0 * (1.0 - 4.0 * (t - 0.5) * (t - 0.5));
-        }
-        // Slide phase (0.25 to 1.0) - slides down
-        else {
-            float slide_progress = (progress - 0.25) / 0.75;
-            y_offset = -slide_progress * (size_geo.y + 100.0);
-        }
 
-        // Apply transformation
-        vec2 coords = coords_geo.xy * size_geo.xy;
-        coords.y = coords.y + y_offset;
+                float prog = ease_curve(t);
 
-        coords_geo = vec3(coords / size_geo.xy, 1.0);
+                // choose corner: 0=top-left,1=top-right,2=bottom-left,3=bottom-right
 
-        vec3 coords_tex = niri_geo_to_tex * coords_geo;
-        vec4 color = texture2D(niri_tex, coords_tex.st);
+                int corner = 0; 
+                vec2 start;
+                vec2 dir;
+                if (corner == 0) {
+                    start = vec2(0.0,0.0);
+                    dir = vec2(1.0,1.0);
+                } else if (corner == 1) {
+                    start = vec2(1.0,0.0);
+                    dir = vec2(-1.0,1.0);
+                } else if (corner == 2) {
+                    start = vec2(0.0,1.0);
+                    dir = vec2(1.0,-1.0);
+                } else {
+                    start = vec2(1.0,1.0);
+                    dir = vec2(-1.0,-1.0);
+                }
 
-        return color;
-    }
-    vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-        return bob_and_slide(coords_geo, size_geo);
-    }"
+                float shadow_fix = 0.01; // otherwise the animation may stop before 
+                // it hides the shadow, since it's outside the window bounds
+
+                // compute distance along diagonal from corner
+
+                vec2 p = coords_geo.xy;
+                float dist = dot(p - start, dir) - shadow_fix;
+
+                // normalize distance to max diagonal
+                float max_diag = 2.0; // max of vec2(1,1)
+                float norm_dist = dist / max_diag;
+
+
+                // If pixel is behind the sweeping line, make it invisible
+
+                if (norm_dist <= prog) {
+                    return vec4(0.0);
+                }
+
+                // sample normally
+                vec3 coords_tex = niri_geo_to_tex * coords_geo;
+                vec4 col = texture2D(niri_tex, coords_tex.xy);
+
+                return col;
+            }
+        "
     }
 
     horizontal-view-movement {
-        spring damping-ratio=0.65 stiffness=423 epsilon=0.0001
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
     }
     window-movement {
-        spring damping-ratio=0.65 stiffness=300 epsilon=0.0001
+        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
     }
     window-resize {
         custom-shader r"
@@ -355,12 +386,12 @@ window-rule {
 // workspace "stash"
 
 output "DP-2" {
-    mode "1680x1050@59.954"
+    mode "1920x1080@60.000"
 
     scale 1.0
 
     transform "normal"
-    position x=1805 y=0
+    position x=7204 y=1121
 }
 output "DP-3" {
     mode "1920x1080@60.000"
@@ -368,7 +399,7 @@ output "DP-3" {
     scale 1.0
 
     transform "normal"
-    position x=1805 y=10
+    position x=3723 y=478
 }
 output "DVI-I-3" {
     mode "1920x1080@60.000"
@@ -392,7 +423,7 @@ output "DP-8" {
     scale 1.0
 
     transform "normal"
-    position x=6284 y=583
+    position x=7756 y=2343
 }
 output "DP-9" {
     mode "1680x1050@59.954"
@@ -400,7 +431,7 @@ output "DP-9" {
     scale 1.0
 
     transform "normal"
-    position x=3724 y=0
+    position x=7239 y=1439
 }
 output "DP-5" {
     mode "1920x1080@60.000"
@@ -408,23 +439,16 @@ output "DP-5" {
     scale 1.0
 
     transform "normal"
-    position x=3724 y=1050
+    position x=7239 y=2489
 }
-output "DVI-I-1" {
-    mode "1920x1080@60.000"
 
-    scale 1.0
-
-    transform "normal"
-    position x=2764 y=507
-}
 output "DVI-I-2" {
     mode "1920x1080@60.000"
 
     scale 1.0
 
     transform "normal"
-    position x=6488 y=560
+    position x=4533 y=1015
 }
 output "DP-7" {
     mode "2560x1440@164.834"
@@ -432,5 +456,21 @@ output "DP-7" {
     scale 1.0
 
     transform "normal"
-    position x=3724 y=429
+    position x=5196 y=2134
+}
+output "DP-4" {
+    mode "1920x1080@60.000"
+
+    scale 1.0
+
+    transform "normal"
+    position x=1996 y=2472
+}
+output "DVI-I-1" {
+    mode "1920x1080@60.000"
+
+    scale 1.0
+
+    transform "normal"
+    position x=6453 y=1015
 }

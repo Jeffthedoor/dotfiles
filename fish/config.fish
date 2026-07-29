@@ -66,7 +66,7 @@ end
 function update
     nix flake update --flake /home/door/.config/nixos
     sudo nix-channel --update
-    sudo nixos-rebuild switch --flake /home/door/.config/nixos#nixos
+    sudo nixos-rebuild switch --flake /home/door/.config/nixos#nixos --upgrade
     gc
 end
 
