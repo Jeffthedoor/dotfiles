@@ -21,6 +21,7 @@
     ./modules/hardware.nix
     ./modules/power.nix
     ./modules/desktop.nix
+    ./modules/noctalia.nix
     ./modules/programs.nix
     ./modules/services.nix
     ./modules/packages.nix

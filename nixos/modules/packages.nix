@@ -72,13 +72,14 @@
     dig # dns inspector
     jq # json parser
 
-    # git, fish, and foot are declared lower because nix is ass
+    # git, fish, are declared lower because nix is ass
 
     # gui apps
     vesktop # wordle
     moonlight-qt # FUCK windows
     openrazer-daemon # razer mouse config
     piper # logitech mouse config
+    ghostty
 
     # media
     vlc # favorite music app
@@ -113,6 +114,7 @@
     inxi
     lm_sensors
     spotify-player
+    gptfdisk
   ];
 
   documentation = {

@@ -1,40 +1,75 @@
 customCommands:
-  - key: '<c-f>'
-    command: 'git fetch --prune origin'
-    context: 'remotes'
-  - key: '<c-r>'
-    command: 'git reset --soft HEAD~1'
-    context: 'localBranches'
-  - key: '<c-n>'
-    command: 'git reset --hard'
-    context: 'localBranches'
+  - key: "<c-f>"
+    command: "git fetch --prune origin"
+    context: "remotes"
+  - key: "<c-r>"
+    command: "git reset --soft HEAD~1"
+    context: "localBranches"
+  - key: "<c-n>"
+    command: "git reset --hard"
+    context: "localBranches"
 gui:
   # stuff relating to the UI
+  theme:
+    activeBorderColor:
+      - "#dab9ff"
+      - bold
+    inactiveBorderColor:
+      - "#dab9ff"
+    searchingActiveBorderColor:
+      - "#ffaedc"
+      - bold
+    optionsTextColor:
+      - "#cec2d7"
+    selectedLineBgColor:
+      - "#cec2d7"
+    inactiveViewSelectedLineBgColor:
+      - bold
+    cherryPickedCommitFgColor:
+      - "#cec2d7"
+    cherryPickedCommitBgColor:
+      - "#ffaedc"
+    markedBaseCommitFgColor:
+      - "#ffaedc"
+    markedBaseCommitBgColor:
+      - "#ffb4ab"
+    unstagedChangesColor:
+      - "#ffb4ab"
+    defaultFgColor:
+      - "#e9dfee"
   scrollHeight: 2 # how many lines you scroll by
   scrollPastBottom: true # enable scrolling past the bottom
   sidePanelWidth: 0.3333 # number from 0 to 1
   expandFocusedSidePanel: false
-  mainPanelSplitMode: 'flexible' # one of 'horizontal' | 'flexible' | 'vertical'
-  language: 'auto' # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl'
-  theme:
-    lightTheme: false # For terminals with a light background
-    activeBorderColor:
-      - '#ff8800'
-      - bold
-    inactiveBorderColor:
-      - blue
-    optionsTextColor:
-      - blue
-    selectedLineBgColor:
-      - default
-    selectedRangeBgColor:
-      - blue
-    cherryPickedCommitBgColor:
-      - blue
-    cherryPickedCommitFgColor:
-      - cyan
-    unstagedChangesColor:
-      - '#ff8800'
+  mainPanelSplitMode: "flexible" # one of 'horizontal' | 'flexible' | 'vertical'
+  language: "auto" # one of 'auto' | 'en' | 'zh' | 'pl' | 'nl'
+  # theme:
+  #   activeBorderColor:
+  #     - "#662300"
+  #     - bold
+  #   inactiveBorderColor:
+  #     - "#85523b"
+  #   searchingActiveBorderColor:
+  #     - "#6a5f11"
+  #     - bold
+  #   optionsTextColor:
+  #     - "#56423a"
+  #   selectedLineBgColor:
+  #     - "#56423a"
+  #   inactiveViewSelectedLineBgColor:
+  #     - bold
+  #   cherryPickedCommitFgColor:
+  #     - "#56423a"
+  #   cherryPickedCommitBgColor:
+  #     - "#6a5f11"
+  #   markedBaseCommitFgColor:
+  #     - "#6a5f11"
+  #   markedBaseCommitBgColor:
+  #     - "#ba1a1a"
+  #   unstagedChangesColor:
+  #     - "#ba1a1a"
+  #   defaultFgColor:
+  #     - "#231915"
   commitLength:
     show: false
   mouseEvents: true
@@ -49,4 +84,4 @@ git:
   commitPrefixes:
     nautilus: # This is repository folder name
       - pattern: "^(\\d+).*"
-        replace: '[#$1] '
+        replace: "[#$1] "

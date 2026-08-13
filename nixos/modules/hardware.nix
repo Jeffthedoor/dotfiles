@@ -18,6 +18,11 @@
   # regdom
   hardware.wirelessRegulatoryDatabase = true;
 
+  # Enable fw-fanctrl systemd service and tools
+  hardware.fw-fanctrl = {
+    enable = true;
+  };
+
   services = {
     # dock / displaylink
     xserver.videoDrivers = [

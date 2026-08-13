@@ -11,6 +11,11 @@
     ];
     # Deduplicate and hard-link the store after each build
     auto-optimise-store = true;
+
+    trusted-users = [
+      "root"
+      "@wheel"
+    ];
   };
 
   # Automatic garbage collection so the store doesn't balloon

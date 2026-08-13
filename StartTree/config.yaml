@@ -26,9 +26,9 @@ tree_2:
     d2l: "https://d2l.msu.edu/d2l/lp/auth/saml/initiate-login?entityId=http://www.okta.com/exk8au7wid9bEq7Jw357"
     coursicle: "https://www.coursicle.com/msu/"
     # LON-CAPA: "https://s2.lite.msu.edu/"
-    # McGraw:
-    #   - "https://newconnect.mheducation.com/"
-    #   - "mcgraw hill"
+    McGraw:
+      - "https://newconnect.mheducation.com/"
+      - "mcgraw hill"
     # WebWork: "https://webwork2c.math.msu.edu/webwork2/mth_235_ss26_1"
   work:
     tandem-bot: https://github.com/coordynal/tandem-bot

@@ -12,7 +12,8 @@
 
   programs.git.enable = true;
   programs.fish.enable = true;
-  programs.foot.enable = true;
+  # programs.foot.enable = true;
+
   programs.direnv.enable = true;
   programs.thunar.enable = true;
   programs.gnome-disks.enable = true;

@@ -64,10 +64,17 @@ function fish_greeting
 end
 
 function update
+    echo (set_color blue)"Updating flake inputs..."(set_color normal)
     nix flake update --flake /home/door/.config/nixos
-    sudo nix-channel --update
-    sudo nixos-rebuild switch --flake /home/door/.config/nixos#nixos --upgrade
-    gc
+
+    and echo (set_color blue)"Updating Nix Channels..."(set_color normal)
+    and sudo nix-channel --update
+
+    and echo (set_color blue)"Rebuilding NixOS..."(set_color normal)
+    and sudo nixos-rebuild switch --flake /home/door/.config/nixos#nixos --upgrade
+
+    and echo (set_color blue)"Running Garbage Collection..."(set_color normal)
+    and gc
 end
 
 # Hook direnv into fish

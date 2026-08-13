@@ -9,3 +9,5 @@ include "autostarts.kdl"
 gestures {
     hot-corners
 }
+
+include "noctalia.kdl"

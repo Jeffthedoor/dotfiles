@@ -183,7 +183,7 @@ animations {
 
                 // choose corner: 0=top-left,1=top-right,2=bottom-left,3=bottom-right
 
-                int corner = 3; 
+                int corner = 3;
                 vec2 start;
                 vec2 dir;
                 if (corner == 0) {
@@ -239,7 +239,7 @@ animations {
 
                 // choose corner: 0=top-left,1=top-right,2=bottom-left,3=bottom-right
 
-                int corner = 0; 
+                int corner = 0;
                 vec2 start;
                 vec2 dir;
                 if (corner == 0) {
@@ -256,7 +256,7 @@ animations {
                     dir = vec2(-1.0,-1.0);
                 }
 
-                float shadow_fix = 0.01; // otherwise the animation may stop before 
+                float shadow_fix = 0.01; // otherwise the animation may stop before
                 // it hides the shadow, since it's outside the window bounds
 
                 // compute distance along diagonal from corner
@@ -356,6 +356,11 @@ window-rule {
     default-column-width { proportion 0.35; }
 }
 
+// window-rule {
+//   match app-id="ghostty"
+//   opacity 0.94
+// }
+
 
 layer-rule {
     match namespace="wallpaper"
@@ -391,7 +396,7 @@ output "DP-2" {
     scale 1.0
 
     transform "normal"
-    position x=7204 y=1121
+    position x=5196 y=2378
 }
 output "DP-3" {
     mode "1920x1080@60.000"
@@ -423,7 +428,7 @@ output "DP-8" {
     scale 1.0
 
     transform "normal"
-    position x=7756 y=2343
+    position x=7756 y=2385
 }
 output "DP-9" {
     mode "1680x1050@59.954"
@@ -448,7 +453,7 @@ output "DVI-I-2" {
     scale 1.0
 
     transform "normal"
-    position x=4533 y=1015
+    position x=3276 y=1179
 }
 output "DP-7" {
     mode "2560x1440@164.834"
@@ -472,5 +477,5 @@ output "DVI-I-1" {
     scale 1.0
 
     transform "normal"
-    position x=6453 y=1015
+    position x=5196 y=2348
 }

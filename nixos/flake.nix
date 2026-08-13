@@ -1,6 +1,15 @@
 {
   description = "system flake";
 
+  # Make Noctalia's cache available while building the generation that enables
+  # the same settings system-wide in modules/noctalia.nix.
+  nixConfig = {
+    extra-substituters = [ "https://noctalia.cachix.org" ];
+    extra-trusted-public-keys = [
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixvim.url = "path:./nixvim";
@@ -23,6 +32,8 @@
       url = "github:srinivasr/nirimod";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Kept separate from nixpkgs to use Noctalia's binary cache.
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
   };
 
   outputs =

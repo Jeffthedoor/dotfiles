@@ -3,20 +3,22 @@
 {
   networking.hostName = "nixos"; # Define your hostname.
 
-  networking.wireless.iwd.enable = true;
-  networking.wireless.iwd.settings = {
-    IPv6 = {
-      Enabled = true;
-    };
-    Settings = {
-      AutoConnect = true;
-    };
-  };
+  networking.networkmanager.wifi.powersave = false;
+
+  # networking.wireless.iwd.enable = true;
+  # networking.wireless.iwd.settings = {
+  #   IPv6 = {
+  #     Enabled = true;
+  #   };
+  #   Settings = {
+  #     AutoConnect = true;
+  #   };
+  # };
 
   # Enable networking
   networking.networkmanager = {
     enable = true;
-    wifi.backend = "iwd";
+    # wifi.backend = "iwd";
   };
 
   # Open ports in the firewall.
