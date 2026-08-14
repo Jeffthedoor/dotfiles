@@ -76,7 +76,7 @@
 
     # gui apps
     vesktop # wordle
-    moonlight-qt # FUCK windows
+    # moonlight-qt # FUCK windows
     openrazer-daemon # razer mouse config
     piper # logitech mouse config
     ghostty
