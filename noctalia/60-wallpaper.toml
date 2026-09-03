@@ -1,0 +1,52 @@
+# Wallpaper sources and per-monitor assignments.
+#
+# Managed by hand; see README.md in this directory.
+
+[wallpaper]
+directory = "/home/door/Pictures/walls"
+transition = [ "disc", "honeycomb", "stripes" ]
+
+    [wallpaper.default]
+    path = "/home/door/Pictures/walls/wall1.jpg"
+
+    [wallpaper.last]
+    path = "/home/door/Pictures/walls/wall1.jpg"
+
+    [wallpaper.monitors.DP-11]
+    path = "/home/door/Pictures/walls/wallhaven-lyje9y.png"
+
+    [wallpaper.monitors.DP-3]
+    path = "/home/door/Pictures/walls/wallhaven-yqgk6g.png"
+
+    [wallpaper.monitors.DP-5]
+    path = "/home/door/Pictures/walls/wall4.jpg"
+
+    [wallpaper.monitors.DP-7]
+    path = "/home/door/Pictures/walls/wall4.jpg"
+
+    [wallpaper.monitors.DP-8]
+    path = "/home/door/Pictures/walls/wall4.jpg"
+
+    [wallpaper.monitors.DP-9]
+    path = "/home/door/Pictures/walls/wallhaven-lyje9y.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/door/Pictures/walls/wall1.jpg"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "/home/door/Pictures/walls/wall4.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-content"
+
+    [[wallpaper.favorite]]
+    builtin_palette = "Ayu"
+    palette_source = "builtin"
+    path = "/home/door/Pictures/walls/wall1.jpg"
+    theme_mode = "dark"
+
+    [[wallpaper.favorite]]
+    builtin_palette = "Ayu"
+    palette_source = "builtin"
+    path = "/home/door/Pictures/walls/wallhaven-lyje9y.png"
+    theme_mode = "dark"

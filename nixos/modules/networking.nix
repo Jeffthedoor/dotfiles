@@ -22,7 +22,7 @@
   };
 
   # Open ports in the firewall.
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
   networking.firewall.allowedTCPPorts = [
     57621 # spotify
     1740 # DS

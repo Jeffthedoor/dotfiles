@@ -1,0 +1,16 @@
+# Enabled plugins, plugin sources, per-plugin settings.
+#
+# Managed by hand; see README.md in this directory.
+
+[plugin_settings."avivbintangaringga/nix-monitor"]
+update_command = "fish -c update"
+
+[plugins]
+enabled = [
+    "dotnetrob/cat",
+    "h465855hgg/lyrics",
+    "noctalia/wallhaven",
+    "radimous/prismlauncher-instances",
+    "avivbintangaringga/nix-monitor",
+    "shin/lrc"
+]

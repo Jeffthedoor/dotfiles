@@ -1,0 +1,26 @@
+# Colour scheme, fonts, radius, opacity.
+#
+# Managed by hand; see README.md in this directory.
+
+[theme]
+builtin = "Ayu"
+community_palette = "Oxocarbon"
+mode = "dark"
+source = "builtin"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "btop", "cava", "foot", "gtk3", "gtk4", "ghostty", "helix", "niri", "qt" ]
+    community_ids = [
+        "spicetify",
+        "discord",
+        "libreoffice",
+        "obsidian",
+        "vscode",
+        "prismlauncher",
+        "steam",
+        "obs",
+        "zellij",
+        "bat",
+        "lazygit"
+    ]

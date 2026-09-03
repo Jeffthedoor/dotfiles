@@ -1,0 +1,51 @@
+# Per-widget settings (bar + plugin widgets).
+#
+# Managed by hand; see README.md in this directory.
+
+[widget.audio_visualizer]
+color_2 = "hover"
+
+    [widget.audio_visualizer.actions]
+    left = "media next"
+    right = "media previous"
+
+[widget.bluetooth.actions]
+right = "exec MAC=\"C4:5D:83:5E:52:7C\"; bluetoothctl info \"$MAC\" | grep -q \"Connected: yes\" && bluetoothctl disconnect \"$MAC\" || bluetoothctl connect \"$MAC\""
+
+[widget.cat]
+type = "dotnetrob/cat:cat"
+
+[widget.clock]
+format = "{:%I:%M %P}"
+
+[widget.media]
+art_size = 22
+hide_artist = true
+max_length = 393
+title_scroll = "always"
+
+    [widget.media.actions]
+    left = "media toggle"
+    right = "panel-toggle control-center media"
+
+[widget.network]
+show_label = false
+
+[widget.nix-monitor]
+checking_color = "on_surface"
+show_text = false
+type = "avivbintangaringga/nix-monitor:nix-monitor"
+up_to_date_color = "on_surface"
+update_available_color = "on_surface"
+
+[widget.ram]
+display = "text"
+label_show_units = false
+
+[widget.tray]
+drawer = true
+drawer_columns = 2
+match_adjacent_spacing = true
+
+[widget.wallhaven]
+type = "noctalia/wallhaven:wallhaven"

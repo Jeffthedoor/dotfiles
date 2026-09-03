@@ -6,6 +6,11 @@
 
 {
   boot = {
+    # prevent overloading /boot
+    loader.grub.configurationLimit = 3;
+
+    kernelModules = [ "i2c-dev" ];
+
     # iw reg setting
     extraModprobeConfig = ''
       options cfg80211 ieee80211_regdom="US"
@@ -83,7 +88,7 @@
       "net.ipv4.ipfrag_high_thresh" = 134217728;
     };
 
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_7_1; # pinned: evdi 1.14.15 fails on 7.2 (drm_atomic_state -> drm_atomic_commit)
 
     resumeDevice = "/dev/disk/by-uuid/14d73c8b-a5d5-4a01-8bd0-40b5bec149b3";
   };

@@ -1,0 +1,99 @@
+# Bar layout: monitors, sections, capsule groups.
+#
+# Managed by hand; see README.md in this directory.
+
+[bar]
+order = [ "bar" ]
+
+    [bar.bar]
+    capsule = true
+    center = [ "group:g4" ]
+    concave_edge_corners = false
+    end = [ "group:g3", "group:g7", "group:g2", "group:g6" ]
+    font_family = "DejaVu Sans"
+    font_weight = 700
+    margin_ends = 0
+    radius_top_left = 0
+    radius_top_right = 0
+    show_on_workspace_switch = false
+    start = [ "group:g5", "group:g1", "battery", "group:g8" ]
+
+        [[bar.bar.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g2"
+        members = [ "bluetooth", "network", "notifications" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.bar.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g3"
+        members = [ "brightness" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.bar.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g1"
+        members = [ "cat", "temp", "ram" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.bar.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g4"
+        members = [ "clock", "weather" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.bar.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = false
+        fill = "surface_variant"
+        id = "g5"
+        members = [ "wallhaven", "wallpaper" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.bar.capsule_group]]
+        accordion = true
+        accordion_direction = "start"
+        enabled = true
+        fill = "surface_variant"
+        id = "g6"
+        members = [ "tray", "session", "nix-monitor" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.bar.capsule_group]]
+        accordion = true
+        accordion_direction = "start"
+        enabled = true
+        fill = "surface_variant"
+        id = "g7"
+        members = [ "volume", "input_volume" ]
+        opacity = 1.0
+        padding = 6.0
+
+        [[bar.bar.capsule_group]]
+        accordion = false
+        accordion_direction = "end"
+        enabled = true
+        fill = "surface_variant"
+        id = "g8"
+        members = [ "media", "audio_visualizer" ]
+        opacity = 1.0
+        padding = 6.0

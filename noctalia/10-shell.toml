@@ -1,0 +1,82 @@
+# Shell behaviour: launcher, panels, session actions, control center.
+#
+# Managed by hand; see README.md in this directory.
+
+[[control_center.shortcuts]]
+type = "wifi"
+
+[[control_center.shortcuts]]
+type = "bluetooth"
+
+[[control_center.shortcuts]]
+type = "caffeine"
+
+[[control_center.shortcuts]]
+type = "nightlight"
+
+[[control_center.shortcuts]]
+type = "power_profile"
+
+[[control_center.shortcuts]]
+type = "dark_mode"
+
+[shell]
+clipboard_history_max_entries = 1000
+font_family = "DejaVu Sans"
+niri_overview_type_to_launch_enabled = true
+screen_time_enabled = true
+time_format = "{:%I:%M %P}"
+
+    [shell.launcher]
+    categories = false
+
+    [shell.panel]
+    launcher_placement = "attached"
+    open_near_click_control_center = true
+    open_near_click_session = true
+    polkit_placement = "attached"
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "command"
+    command = "systemctl hibernate"
+    countdown_seconds = 3.0
+    enabled = true
+    glyph = "powersaver"
+    label = "Hibernate"
+    shortcut = "5"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"

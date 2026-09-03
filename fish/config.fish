@@ -102,7 +102,7 @@ end
 function dbent --description "Enter ROS2 Jazzy distrobox and source environment"
     # The -- passes the remaining arguments to the container.
     # fish -C executes the bass command, then drops you into an interactive shell.
-    distrobox enter ros2-jazzy -- fish -C "bass source /opt/ros/jazzy/setup.bash; s"
+    distrobox enter ros2-jazzy -- fish -C "bass source /home/door/code/ros/.envrc; s"
 end
 
 zoxide init fish | source

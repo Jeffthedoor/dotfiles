@@ -23,11 +23,11 @@
     enable = true;
   };
 
+  hardware.i2c.enable = true;
+
   services = {
-    # dock / displaylink
     xserver.videoDrivers = [
       "modesetting"
-      "displaylink"
     ];
 
     hardware.bolt.enable = true;
@@ -64,7 +64,6 @@
     '';
   };
 
-  # displaylink manager
   systemd.services.dlm.wantedBy = [ "multi-user.target" ];
 
   # fprintd

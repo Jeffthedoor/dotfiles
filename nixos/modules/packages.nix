@@ -64,6 +64,7 @@
     vulkan-loader # vulkan
     libGL # openGL
     inputs.niri-scratchpad.packages.${pkgs.stdenv.hostPlatform.system}.default # scratchpad
+    ddcutil
 
     # shell utils
     zoxide # better cd
@@ -93,6 +94,7 @@
     hunspell # (dep of libreoffice)
     elinks # weird web browser
     vscode # what do you think
+    code-cursor-fhs
     superfile # file manager
     slack
 
@@ -115,6 +117,7 @@
     lm_sensors
     spotify-player
     gptfdisk
+    prusa-slicer
   ];
 
   documentation = {

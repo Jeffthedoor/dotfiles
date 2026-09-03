@@ -13,6 +13,7 @@
       "input"
       "disks"
       "openrazer"
+      "i2c"
     ];
     packages = with pkgs; [ ];
   };

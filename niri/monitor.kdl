@@ -15,13 +15,37 @@ output "DP-5" {
 output "DP-9" {
     mode "1680x1050@59.954"
     scale 1.0
-    position x=5196 y=2115
+    position x=5196 y=41
 }
 
 output "eDP-1" {
     mode "2880x1920@120.0"
     scale 1.5
-    position x=3276 y=2235
+    position x=3276 y=-64
     variable-refresh-rate
 }
 
+output "DP-11" {
+    mode "1920x1080@60.000"
+
+    scale 1.0
+
+    transform "normal"
+    position x=7116 y=-6
+}
+output "DP-10" {
+    mode "1920x1080@60.000"
+
+    scale 1.0
+
+    transform "normal"
+    position x=5196 y=0
+}
+output "DP-13" {
+    mode "1920x1080@60.000"
+
+    scale 1.0
+
+    transform "normal"
+    position x=7116 y=0
+}
