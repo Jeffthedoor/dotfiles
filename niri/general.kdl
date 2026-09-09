@@ -77,8 +77,6 @@ prefer-no-csd
 // https://yalter.github.io/niri/Configuration:-Outputs
 // Remember to uncomment the node by removing "/-"!
 output "eDP-1" {
-    variable-refresh-rate
-
     // Uncomment this line to disable this output.
     // off
 
@@ -97,7 +95,10 @@ output "eDP-1" {
     // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
     transform "normal"
 
-    position x=5434 y=1750
+    position x=-1944 y=722
+
+    variable-refresh-rate
+
     // Position of the output in the global coordinate space.
     // This affects directional monitor actions like "focus-monitor-left", and cursor movement.
     // The cursor can only move between directly adjacent outputs.
@@ -398,14 +399,6 @@ output "DP-2" {
     transform "normal"
     position x=5196 y=2378
 }
-output "DP-3" {
-    mode "1920x1080@60.000"
-
-    scale 1.0
-
-    transform "normal"
-    position x=3723 y=478
-}
 output "DVI-I-3" {
     mode "1920x1080@60.000"
 
@@ -431,12 +424,12 @@ output "DP-8" {
     position x=7756 y=2385
 }
 output "DP-9" {
-    mode "1680x1050@59.954"
+    mode "1920x1080@60.000"
 
     scale 1.0
 
     transform "normal"
-    position x=7239 y=1439
+    position x=-24 y=800
 }
 output "DP-5" {
     mode "1920x1080@60.000"
@@ -479,3 +472,4 @@ output "DVI-I-1" {
     transform "normal"
     position x=5196 y=2348
 }
+

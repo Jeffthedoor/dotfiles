@@ -12,31 +12,31 @@ gui:
   # stuff relating to the UI
   theme:
     activeBorderColor:
-      - "#e6b450"
+      - "#c1c4e9"
       - bold
     inactiveBorderColor:
-      - "#aad94c"
+      - "#c5c5d6"
     searchingActiveBorderColor:
-      - "#39bae6"
+      - "#e6bad4"
       - bold
     optionsTextColor:
-      - "#8e959e"
+      - "#c7c5ce"
     selectedLineBgColor:
-      - "#272c36"
+      - "#2a2a2c"
     inactiveViewSelectedLineBgColor:
       - bold
     cherryPickedCommitFgColor:
-      - "#8e959e"
+      - "#c7c5ce"
     cherryPickedCommitBgColor:
-      - "#39bae6"
+      - "#e6bad4"
     markedBaseCommitFgColor:
-      - "#39bae6"
+      - "#e6bad4"
     markedBaseCommitBgColor:
-      - "#d95757"
+      - "#ffb4ab"
     unstagedChangesColor:
-      - "#d95757"
+      - "#ffb4ab"
     defaultFgColor:
-      - "#d1d1c7"
+      - "#e5e1e4"
   scrollHeight: 2 # how many lines you scroll by
   scrollPastBottom: true # enable scrolling past the bottom
   sidePanelWidth: 0.3333 # number from 0 to 1

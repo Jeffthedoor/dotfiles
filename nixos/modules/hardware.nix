@@ -60,7 +60,7 @@
 
     # allows my flipper to be flashed. for some reason.
     udev.extraRules = ''
-      SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="5740", MODE="0666"
+      SUBSYSTEM=="usb", ATTR{idVendor}=="0483", ATTR{idProduct}=="5740", ATTRS{idVendor}=="1b8e", MODE="0666"
     '';
   };
 
